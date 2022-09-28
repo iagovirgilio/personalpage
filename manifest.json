@@ -1,0 +1,18 @@
+{
+  "short_name": "Iago",
+  "name": "Iago Virgílio - Full Stack Developer",
+  "start_url": "/",
+  "background_color": "#fff",
+  "display": "standalone",
+  "theme_color": "#65eef8",
+  "share_target": {
+    "action": "share.html",
+    "method": "GET",
+    "enctype": "application/x-www-form-urlencoded",
+    "params": {
+      "title": "name",
+      "text": "description",
+      "url": "link"
+    }
+  }
+}
