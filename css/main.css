@@ -1,6 +1,6 @@
 html {
-    background-color: #5f45bb;
-    background-image: linear-gradient(to bottom right, #0053ee, #6254e4);
+    background-color: #65eef8;
+    background-image: linear-gradient(to bottom right, #0053ee, #65eef8);
     color: #fff;
     font-family: "Quicksand", sans-serif;
     font-size: 16px;
@@ -70,7 +70,7 @@ a {
 
 
 .hr {
-    background-color: #ff470f;
+    background-color: #0bfda0;
     border: none;
     content: "";
     height: 1px;
@@ -115,7 +115,7 @@ a {
     background-color: #fff;
     border-radius: 290486px;
     box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
-    color: #9013fe;
+    color: #1381fe;
     display: inline-block;
     font-size: 0.875rem;
     line-height: 1;
