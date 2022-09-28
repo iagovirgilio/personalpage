@@ -2,9 +2,9 @@
   "short_name": "Iago",
   "name": "Iago Virgílio - Full Stack Developer",
   "start_url": "/",
-  "background_color": "#fff",
+  "background_color": "#65eef8",
   "display": "standalone",
-  "theme_color": "#65eef8",
+  "theme_color": "#0053ee",
   "share_target": {
     "action": "share.html",
     "method": "GET",
