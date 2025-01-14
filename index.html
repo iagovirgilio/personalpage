@@ -1,75 +1,133 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="shortcut icon" href="favicon.webp" type="image/x-icon">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/minireset.css">
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/animations.css">
-    <title>Iago Virgílio - Full Stack Developer</title>
-    <link rel="manifest" href="/manifest.json">
-    <script src="js/main.js"></script>
-    <script defer src="https://use.fontawesome.com/releases/v5.0.0/js/all.js"></script>
+    <meta name="description"
+        content="Agência criativa: soluções digitais, sites modernos, landing pages, SEO e muito mais.">
+    <title>Agência Master Web - Criatividade Digital</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Montserrat+Alternates:wght@700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-    <div id="wallpaper" class="wallpaper" data-image="images/fundo.jpg"></div>
-    <div class="content">
-        <aside class="side">
-            <figure id="picture" class="picture">
-                <div class="picture-shadow"></div>
-                <img id="pictureImage" class="picture-image" src="images/iago.jpg" alt="Portrait of Iago Virgílio" width="320" height="320">
-            </figure>
-        </aside>
-        <main class="about">
-            <h1 class="name">
-                Hi, I'm Iago Virgílio
-            </h1>
-            <p class="job">
-                Full Stack Developer
-            </p>
-            <hr class="hr">
-            <div class="description">
-                <p>
-                    I spend my time helping startups and tech businesses create solutions to leverage their businesses.
-                </p>
+    <!-- Header -->
+    <header class="hero">
+        <div class="container">
+            <nav>
+                <a style="text-decoration: none; color: #ffffff;" href="#" class="logo">Master Web</a>
+                <ul>
+                    <li><a href="#servicos">Serviços</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
+            </nav>
+            <div class="hero-content">
+                <h1>Crie Impacto com Criatividade <br> na Internet</h1>
+                <p>Transforme sua presença digital com inovação e soluções criativas.</p>
+                <a href="#contato" class="btn">Saiba Mais</a>
             </div>
-            <div class="contact">
-                <a class="button" href="mailto:iagovirgilio@gmail.com">
-                    Get in touch
-                </a>
+            <!-- Formas geométricas -->
+            <div class="background-shape circle1"></div>
+            <div class="background-shape circle2"></div>
+        </div>
+    </header>
+
+    <!-- Serviços -->
+    <section id="servicos" class="servicos">
+        <div class="container">
+            <h2>Nossos Serviços</h2>
+            <div class="cards">
+                <div class="card">
+                    <h3>Criação de Sites</h3>
+                    <p>Sites modernos e responsivos para destacar sua marca.</p>
+                </div>
+                <div class="card">
+                    <h3>Landing Pages</h3>
+                    <p>Projetadas para conversões e resultados rápidos.</p>
+                </div>
+                <div class="card">
+                    <h3>Sistemas</h3>
+                    <p>Soluções personalizadas para atender às suas necessidades.</p>
+                </div>
+                <div class="card">
+                    <h3>Google Meu Negócio</h3>
+                    <p>Maximize sua presença local com fichas otimizadas.</p>
+                </div>
+                <div class="card">
+                    <h3>Otimização e SEO</h3>
+                    <p>Apareça no topo das buscas com estratégias eficazes.</p>
+                </div>
+                <div class="card">
+                    <h3>Cartões Digitais</h3>
+                    <p>Compartilhe contatos de forma moderna e prática.</p>
+                </div>
+                <div class="card">
+                    <h3>E-books</h3>
+                    <p>Produção de e-books para engajar e fidelizar clientes.</p>
+                </div>
+                <div class="card">
+                    <h3>Cursos</h3>
+                    <p>Aprenda a fazer seu próprio site ou sistema.</p>
+                </div>
             </div>
-            <ul class="social">
-                <li>
-                    <a href="https://www.linkedin.com/in/iagovirgilio/" target="_blank">
-                        <i class="fab fa-linkedin"></i>
-                    </a>
-                </li>
-                <li>
-                    <a href="https://github.com/iagovirgilio" target="_blank">
-                        <i class="fab fa-github"></i>
-                    </a>
-                </li>
-                <li>
-                    <a href="https://medium.com/@iagovirgilio" target="_blank">
-                        <i class="fab fa-medium"></i>
-                    </a>
-                </li>
-                <li>
-                    <a href="https://wa.me/5575981311648?text=Ol%C3%A1%2C%20Iago.%20Gostaria%20de%20saber%20mais%20sobre%20seus%20servi%C3%A7os." target="_blank">
-                        <i class="fab fa-whatsapp"></i>
-                    </a>
-                </li>
-                <li>
-                    <a href="https://www.youtube.com/channel/UC-EhciBelgiuN8LwKN5_6qQ" target="_blank">
-                        <i class="fab fa-youtube"></i>
-                    </a>
-                </li>
-            </ul>
-        </main>
-    </div>
+        </div>
+    </section>
+
+    <!-- Contato -->
+    <section id="contato" class="contato">
+        <div class="container">
+            <h2>Entre em Contato</h2>
+            <form id="contato-form">
+                <input type="text" id="nome" placeholder="Seu Nome" required>
+                <input type="email" id="email" placeholder="Seu Email" required>
+                <textarea id="mensagem" placeholder="Sua Mensagem" rows="5" required></textarea>
+                <button type="submit">Enviar</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Master Web. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Botão do WhatsApp -->
+    <a href="https://wa.me/+5575981311648" class="whatsapp-button" target="_blank"
+        title="Entre em Contato via WhatsApp">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+            <path
+                d="M16 0C7.164 0 0 7.164 0 16c0 2.837.743 5.659 2.155 8.107L0 32l8.095-2.139C10.457 31.258 13.188 32 16 32c8.836 0 16-7.164 16-16S24.836 0 16 0zm0 29.091c-2.637 0-5.223-.712-7.482-2.055l-.536-.318-4.821 1.274 1.26-4.685-.35-.568C2.692 20.55 2 18.296 2 16 2 8.832 8.832 2 16 2s14 6.832 14 14-6.832 14-14 14zm6.508-8.953c-.365-.183-2.158-1.064-2.491-1.183-.333-.119-.578-.183-.822.183-.244.366-.943 1.183-1.156 1.427-.213.244-.426.274-.791.091-.365-.183-1.543-.568-2.938-1.811-1.085-.967-1.814-2.158-2.026-2.523-.213-.366-.023-.563.16-.746.163-.163.365-.427.548-.64.183-.213.244-.365.365-.609.122-.244.061-.457-.03-.64-.091-.183-.791-1.91-1.085-2.623-.285-.693-.574-.597-.822-.61-.213-.007-.457-.007-.701-.007s-.64.092-.975.457c-.335.366-1.276 1.244-1.276 3.032s1.306 3.516 1.488 3.755c.183.244 2.538 3.872 6.158 5.43.861.371 1.533.594 2.058.759.865.275 1.652.237 2.276.145.694-.101 2.158-.835 2.462-1.643.305-.808.305-1.504.213-1.643-.091-.139-.335-.213-.7-.396z" />
+        </svg>
+    </a>
+    <div class="whatsapp-bubble">Posso te ajudar?</div>
+
+    <script>
+        document.getElementById('contato-form').addEventListener('submit', function (event) {
+            event.preventDefault(); // Previne o envio padrão do formulário
+
+            // Capturar os dados do formulário
+            const nome = document.getElementById('nome').value;
+            const email = document.getElementById('email').value;
+            const mensagem = document.getElementById('mensagem').value;
+
+            // Montar a mensagem para o WhatsApp
+            const whatsappNumber = "+5575981311648"; // Seu número de WhatsApp com código do país
+            const whatsappMessage = `Olá, meu nome é ${nome}.\n\nEmail: ${email}\n\nMensagem: ${mensagem}`;
+
+            // Criar o link dinâmico do WhatsApp
+            const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+
+            // Redirecionar para o WhatsApp
+            window.open(whatsappURL, '_blank');
+        });
+    </script>
+
 </body>
 
 </html>
