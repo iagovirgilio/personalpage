@@ -78,17 +78,34 @@ img {
 .hero nav .logo {
     font-size: 24px;
     font-weight: 600;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: all 0.3s ease;
+    animation: fadeInHero 0.2s ease-in-out forwards;
+    animation-delay: 0.5s;
+    z-index: 2;
+    transition: all 0.3s ease;
 }
 .hero nav ul {
     list-style: none;
     display: flex;
     gap: 20px;
+    transition: all 0.3s ease;
+    animation: fadeInHero 0.2s ease-in-out forwards;
+    animation-delay: 0.7s;
+    z-index: 2;
+    transition: all 0.3s ease;
 }
 .hero nav ul li a {
     font-size: 1.4rem;
     font-weight: bold;
     color: #ffffff;
     text-decoration: none;
+    transition: all 0.3s ease;
+    animation: fadeInHero 0.2s ease-in-out forwards;
+    animation-delay: 0.9s;
+    z-index: 2;
     transition: all 0.3s ease;
 }
 
@@ -97,6 +114,12 @@ img {
     margin-bottom: 20px;
     font-family: 'Montserrat', sans-serif;
     animation: textAppear 2s ease-in-out;
+    animation-fill-mode: forwards;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInContent 2s ease-in-out forwards;
+    z-index: 2;
+    transition: all 0.3s ease;
 }
 
 .hero-content p {
@@ -105,6 +128,8 @@ img {
     opacity: 0;
     transform: translateY(30px);
     animation: fadeInContent 2s ease-in-out forwards;
+    z-index: 2;
+    transition: all 0.3s ease;
 }
 .hero-content .btn {
     color: #ffffff;
@@ -131,6 +156,7 @@ img {
     transform: scale(0.8);
     animation: fadeInContent 2.5s ease-in-out forwards;
     transition: all 0.3s ease;
+    z-index: 2;
 }
 .hero-content .btn:hover {
     background: linear-gradient(to right, #6a1b9a, #8e24aa);
@@ -225,7 +251,7 @@ img {
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     text-align: center;
-    min-height: 200px;
+    min-height: 150px;
     opacity: 0;
     transform: translateY(30px);
     animation: fadeInCards 0.8s ease-in-out forwards;
@@ -278,6 +304,7 @@ img {
     margin-bottom: 20px;
     color: #4a148c;
     font-family: 'Montserrat', sans-serif;
+
 }
 .contato form {
     display: flex;
@@ -289,6 +316,8 @@ img {
     transform: translateY(30px);
     animation: fadeInForm 1s ease-in-out forwards;
     animation-delay: 2.5s;
+    transition: all 0.3s ease;
+    text-align: left;
 }
 .contato form input,
 .contato form textarea {
@@ -314,8 +343,6 @@ img {
     color: #999;
     font-family: 'Montserrat', sans-serif;
 }
-
-
 .contato form button {
     background: #4a148c;
     color: #ffffff;
@@ -330,6 +357,8 @@ img {
     animation: fadeInForm 1s ease-in-out forwards;
     animation-delay: 2.5s;
     transition: all 0.3s ease;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
 }
 .contato form button:hover {
     background: linear-gradient(to right, #6a1b9a, #8e24aa);
@@ -418,4 +447,114 @@ footer {
     0% { transform: scale(1); }
     50% { transform: scale(1.1); }
     100% { transform: scale(1); }
+}
+
+/* Novos Estilos Adicionados */
+.cta-container {
+    margin-top: 30px;
+}
+
+.cta-subtext {
+    display: block;
+    margin-top: 15px;
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+.scroll-indicator {
+    position: absolute;
+    bottom: 30px;
+    animation: bounce 2s infinite;
+    font-size: 1.2rem;
+}
+
+.diferenciais {
+    padding: 80px 20px;
+    background: #fff;
+}
+
+.trust-badge {
+    background: #f8f9fa;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.testemunhos blockquote {
+    font-style: italic;
+    margin: 20px 0;
+}
+
+/* Animações Ajustadas */
+.contato form button {
+    animation-delay: 0s !important;
+}
+
+/* Seção Diferenciais */
+.diferenciais {
+    padding: 80px 20px;
+    background: #fff;
+    text-align: center;
+}
+
+.diferenciais h2 {
+    font-size: 2.5rem;
+    color: #4a148c;
+    margin-bottom: 40px;
+}
+
+.diferenciais .cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.diferenciais .card {
+    padding: 30px;
+    background: #f8f8f8;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+    text-align: center;
+}
+
+.diferenciais .card h3 {
+    font-size: 1.5rem;
+    color: #4a148c;
+    margin: 15px 0;
+    line-height: 1.4;
+}
+
+.diferenciais .card p {
+    color: #666;
+    font-size: 1rem;
+}
+
+.diferenciais .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(74, 20, 140, 0.1);
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+    .diferenciais .cards {
+        grid-template-columns: 1fr;
+    }
+    
+    .diferenciais .card {
+        margin: 0 15px;
+    }
+
+    .hero-content h1 {
+        font-size: 2.5rem;
+        line-height: 1.2;
+    }
+
+    .hero nav ul li a {
+        font-size: 1.1rem;
+    }
+
+    .servicos .card h3 {
+        font-size: 1.3rem;
+    }
 }
