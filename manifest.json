@@ -1,10 +1,16 @@
 {
   "name": "Agência Master Web",
   "short_name": "Master Web",
-  "theme_color": "#ffffff",
-  "background_color": "#ffffff",
+  "theme_color": "#4a148c",
+  "background_color": "#4a148c",
+  "scope": "/",
   "start_url": "index.html",
   "display": "standalone",
+  "orientation": "portrait",
+  "description": "Agência Master Web",
+  "lang": "pt-BR",
+  "dir": "ltr",
+  "prefer_related_applications": false,
   "icons": [
     {
       "src": "favicon.webp",
