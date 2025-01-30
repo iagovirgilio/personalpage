@@ -4,16 +4,30 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* Suavização extra para as âncoras */
+@media (prefers-reduced-motion: no-preference) {
+    html {
+        scroll-behavior: smooth;
+    }
+    
+    [id] {
+        transition: scroll-margin-top 0.3s ease-in-out;
+    }
+}
+
 body {
     font-family: 'Roboto', sans-serif;
     font-size: 16px;
     font-weight: 400;
     line-height: 1.6;
     color: #333;
-    overflow-x: hidden;
     background-color: #f5f5f5;
     scroll-behavior: smooth;
-    overflow-x: hidden;
     position: relative;
     min-height: 100vh;
     display: flex;
@@ -194,6 +208,23 @@ img {
     to { opacity: 1; transform: translateY(0); }
 }
 
+.phone-link {
+    color: #ffffff;
+    font-size: 1.2rem;
+    font-weight: 600;
+    font-family: 'Montserrat', sans-serif;
+    text-shadow: 0 0 8px rgba(0, 231, 235, 0.4);
+    z-index: 2;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.phone-link:hover {
+    color: #00E7EB !important;
+    text-shadow: 0 0 8px rgba(0, 231, 235, 0.4);
+}
+
 /* Background Shapes */
 .background-shape {
     position: absolute;
@@ -218,7 +249,7 @@ img {
 
 /* Serviços Section */
 .servicos {
-    padding: 50px 20px;
+    padding: 120px 20px;
     background: #f9f9f9;
     text-align: center;
     opacity: 0;
@@ -264,6 +295,20 @@ img {
     transform: translateY(30px);
     animation: fadeInCards 0.8s ease-in-out forwards;
     animation-delay: calc(var(--index) * 0.2s);
+    position: relative;
+    overflow: hidden;
+}
+
+.servicos .card::after {
+    content: '';
+    position: absolute;
+    bottom: -20px;
+    left: -20px;
+    width: 40px;
+    height: 40px;
+    background: rgba(0, 231, 235, 0.1);
+    border-radius: 50%;
+    transition: all 0.3s ease;
 }
 
 .servicos .card h3 {
@@ -300,7 +345,7 @@ img {
 
 /* Contato Section */
 .contato {
-    padding: 50px 20px;
+    padding: 120px 20px;
     background: #ffffff;
     text-align: center;
     opacity: 0;
@@ -476,11 +521,6 @@ footer {
     font-size: 1.2rem;
 }
 
-.diferenciais {
-    padding: 80px 20px;
-    background: #fff;
-}
-
 .trust-badge {
     background: #f8f9fa;
     padding: 20px 0;
@@ -499,7 +539,7 @@ footer {
 
 /* Seção Diferenciais */
 .diferenciais {
-    padding: 80px 20px;
+    padding: 120px 20px;
     background: #fff;
     text-align: center;
 }
@@ -524,6 +564,9 @@ footer {
     border-radius: 10px;
     transition: transform 0.3s ease;
     text-align: center;
+    box-shadow: 0 8px 30px rgba(106, 27, 154, 0.12);
+    transform: translateZ(0);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .diferenciais .card h3 {
