@@ -617,3 +617,71 @@ footer {
     color: #4a148c;
     font-weight: bold;
 }
+
+/* Estilos para a Seção de Projetos */
+.projetos {
+    padding: 120px 20px;
+    background: #4a148c;
+    text-align: center;
+    position: relative;
+}
+
+.projetos h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #ffffff;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.projetos .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.projetos .card {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.projetos .card:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.projetos .card img {
+    max-width: 100%;
+    border-radius: 8px;
+}
+
+.projetos .card h3 {
+    font-size: 1.5rem;
+    margin: 10px 0;
+    color: #4a148c;
+}
+
+.projetos .card p {
+    font-size: 1rem;
+    color: #333;
+    line-height: 1.5;
+}
+
+.projetos .card a {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 20px;
+    background: #4a148c;
+    color: #ffffff;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background 0.3s;
+}
+
+.projetos .card a:hover {
+    background: #6a1b9a;
+}
