@@ -23,6 +23,7 @@
     <!-- Fontes -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Montserrat+Alternates:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.1/aos.css" />
     <title>Agência Master Web - Sites Profissionais que Geram Clientes</title>
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
@@ -78,45 +79,22 @@
     </header>
 
     <!-- Seção Porque Nós -->
-    <section class="diferenciais">
+    <section class="diferenciais" data-aos="fade-up">
         <div class="container">
-            <h2>Por Que Escolher a Master Web?</h2>
+            <h2 data-aos="fade-up" data-aos-delay="100">Por Que Escolher a Master Web?</h2>
             <div class="cards">
-                <div class="card">
+                <div class="card" data-aos="fade-up" data-aos-delay="200">
                     <h3>🚀 Entrega Rápida</h3>
                     <p>Seu site pronto em até 7 dias úteis</p>
                 </div>
-                <div class="card">
+                <div class="card" data-aos="fade-up" data-aos-delay="300">
                     <h3>🔒 Garantia de 12 Meses</h3>
                     <p>Suporte técnico e atualizações inclusas no pacote de suporte</p>
                 </div>
-                <div class="card">
+                <div class="card" data-aos="fade-up" data-aos-delay="400">
                     <h3>💳 Parcelamento</h3>
                     <p>Em até 3x no cartão</p>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Serviços (Atualizado) -->
-    <section id="servicos" class="servicos">
-        <div class="container">
-            <h2>Nossos Serviços</h2>
-            <div class="cards">
-                <!-- Cards atualizados com nova copy -->
-                <div class="card">
-                    <h3>Sites de Alta Conversão</h3>
-                    <p>Design exclusivo + otimização para vendas</p>
-                </div>
-                <div class="card">
-                    <h3>SEO Profissional</h3>
-                    <p>Posicionamento no topo do Google</p>
-                </div>
-                <div class="card">
-                    <h3>Google meu Negócio</h3>
-                    <p>Posicionamento no topo do Google</p>
-                </div>
-                <!-- ... outros cards com mesma estrutura ... -->
             </div>
         </div>
     </section>
@@ -129,10 +107,39 @@
         </div>
     </div> -->
 
-    <!-- Contato (Atualizado) -->
-    <section id="contato" class="contato">
+    <!-- Serviços -->
+    <section id="servicos" class="servicos" data-aos="fade-up">
         <div class="container">
-            <h2>Pronto para Alavancar seu Negócio?</h2>
+            <h2 data-aos="fade-up" data-aos-delay="100">Nossos Serviços</h2>
+            <div class="cards">
+                <div class="card" data-aos="fade-up" data-aos-delay="200">
+                    <h3>Sites de Alta Conversão</h3>
+                    <p>Design exclusivo + otimização para vendas</p>
+                </div>
+                <div class="card" data-aos="fade-up" data-aos-delay="300">
+                    <h3>SEO Profissional</h3>
+                    <p>Posicionamento no topo do Google</p>
+                </div>
+                <div class="card" data-aos="fade-up" data-aos-delay="400">
+                    <h3>Google meu Negócio</h3>
+                    <p>Posicionamento no topo do Google</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção de Confiança -->
+    <!-- <div class="trust-badge">
+        <div class="container">
+            <img src="google-partner.png" alt="Parceiro Google" width="120">
+            <p>+ de 150 projetos entregues</p>
+        </div>
+    </div> -->
+
+    <!-- Contato -->
+    <section id="contato" class="contato" data-aos="fade-up">
+        <div class="container">
+            <h2 data-aos="fade-up" data-aos-delay="100">Pronto para Alavancar seu Negócio?</h2>
             <form id="contato-form" aria-labelledby="contato">
                 <label for="nome">Nome:</label>
                 <input type="text" id="nome" required aria-required="true" aria-label="Nome">
@@ -197,6 +204,16 @@
 
             // Redirecionar para o WhatsApp
             window.open(whatsappURL, '_blank');
+        });
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.1/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800, // Duração da animação em milissegundos
+            easing: 'ease-in-out', // Efeito de suavização
+            once: false, // Se a animação deve ocorrer apenas uma vez
+            mirror: false // Se a animação deve ocorrer ao rolar para cima
         });
     </script>
 
