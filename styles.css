@@ -609,3 +609,11 @@ footer {
         font-size: 1.3rem;
     }
 }
+
+/* Estilos para Feedback Visual */
+#form-feedback {
+    margin-top: 20px;
+    font-size: 1rem;
+    color: #4a148c;
+    font-weight: bold;
+}

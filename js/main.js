@@ -32,12 +32,33 @@ setTimeout(() => {
 document.getElementById('contato-form').addEventListener('submit', function(e) {
     e.preventDefault();
     
+    const nome = document.getElementById('nome').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const mensagem = document.getElementById('mensagem').value.trim();
+    
+    // Validação simples
+    if (!nome || !email || !mensagem) {
+        alert("Por favor, preencha todos os campos.");
+        return;
+    }
+
     const phone = '5575981311648';
-    const message = `Olá! Me chamo ${document.getElementById('nome').value}.
-                     Email: ${document.getElementById('email').value}
-                     Mensagem: ${document.getElementById('mensagem').value}`;
+    const message = `Olá! Me chamo ${nome}. Email: ${email} Mensagem: ${mensagem}`;
+
+    // Exibir feedback visual
+    const feedback = document.getElementById('form-feedback');
+    feedback.style.display = 'block';
+    feedback.textContent = 'Enviando sua mensagem...';
 
     window.open(`https://wa.me/${phone}?text=${encodeURIComponent(message)}`, '_blank');
+
+    // Limpar o formulário
+    document.getElementById('contato-form').reset();
+    
+    // Exibir mensagem de sucesso
+    setTimeout(() => {
+        feedback.textContent = 'Mensagem enviada com sucesso!';
+    }, 1000);
 });
 
 // Scroll Suave
