@@ -1,0 +1,4 @@
+ #Cache de 1 mês a partir da data de acesso do arquivo
+<FilesMatch "\.(?i:ico|gif|jpe?g|png|css|js|svg)$">
+   ExpiresDefault "access plus 6 mouth"
+</FilesMatch>
