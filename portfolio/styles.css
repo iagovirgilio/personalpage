@@ -834,4 +834,14 @@ a {
         bottom: 20px;
         right: 20px;
     }
+
+    .cta-buttons a {
+        display: block;
+        width: 100%;
+        margin-bottom: 1rem;
+    }
+
+    .hero-butons {
+        flex-direction: column;
+    }
 }
