@@ -15,7 +15,12 @@ body {
     overflow-x: hidden;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     color: var(--heading-color);
     font-weight: 700;
 }
@@ -23,6 +28,15 @@ h1, h2, h3, h4, h5, h6 {
 section {
     position: relative;
     overflow: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.color-hero {
+    color: #c7d8ef;
 }
 
 .btn {
@@ -125,11 +139,9 @@ section {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(
-        45deg,
-        rgba(67, 97, 238, 0.2),
-        rgba(76, 201, 240, 0.1)
-    );
+    background: linear-gradient(45deg,
+            rgba(67, 97, 238, 0.2),
+            rgba(76, 201, 240, 0.1));
 }
 
 .hero-code-animation pre {
@@ -153,12 +165,19 @@ section {
 }
 
 @keyframes bounce {
-    0%, 20%, 50%, 80%, 100% {
+
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
         transform: translateY(0);
     }
+
     40% {
         transform: translateY(-20px);
     }
+
     60% {
         transform: translateY(-10px);
     }
@@ -243,6 +262,7 @@ section {
     0% {
         transform: translateX(0);
     }
+
     100% {
         transform: translateX(-50%);
     }
@@ -289,6 +309,7 @@ section {
     padding: 0.5rem 1.25rem;
     margin: 0 0.25rem;
     font-weight: 600;
+    cursor: pointer;
 }
 
 .portfolio-filter .nav-link.active {
@@ -521,24 +542,26 @@ section {
     margin-bottom: 0;
 }
 
-.form-control, .form-select {
+.form-control,
+.form-select {
     border: 1px solid #ced4da;
     padding: 1rem;
     border-radius: 5px;
 }
 
-.form-control:focus, .form-select:focus {
+.form-control:focus,
+.form-select:focus {
     border-color: var(--primary);
     box-shadow: 0 0 0 0.25rem rgba(67, 97, 238, 0.25);
 }
 
-.form-floating > .form-control, 
-.form-floating > .form-select {
+.form-floating>.form-control,
+.form-floating>.form-select {
     height: calc(3.5rem + 2px);
     padding: 1rem 0.75rem;
 }
 
-.form-floating > textarea.form-control {
+.form-floating>textarea.form-control {
     height: auto;
 }
 
@@ -637,8 +660,125 @@ section {
 [data-aos] {
     pointer-events: none;
 }
+
 [data-aos].aos-animate {
     pointer-events: auto;
+}
+
+
+/* Botão WhatsApp na seção de contato */
+.whatsapp-btn {
+    background-color: #25D366;
+    border-color: #25D366;
+    padding: 0.75rem 2rem;
+    font-weight: 600;
+    font-size: 1.1rem;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+}
+
+.whatsapp-btn:hover {
+    background-color: #128C7E;
+    border-color: #128C7E;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
+}
+
+.whatsapp-btn i {
+    font-size: 1.3rem;
+}
+
+/* Botão flutuante de WhatsApp */
+.floating-whatsapp {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background-color: #25D366;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.floating-whatsapp:hover {
+    background-color: #128C7E;
+    transform: scale(1.1);
+    color: white;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.floating-whatsapp::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #25D366;
+    border-radius: 50%;
+    z-index: -1;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(1.5);
+        opacity: 0;
+    }
+}
+
+/* Melhorias para a seção de contato sem formulário */
+.contact-details {
+    margin-bottom: 2rem;
+}
+
+.contact-details .contact-item {
+    background-color: rgba(var(--bs-light-rgb), 0.1);
+    padding: 1.5rem;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.contact-details .contact-item:hover {
+    background-color: rgba(var(--bs-light-rgb), 0.2);
+    transform: translateY(-5px);
+}
+
+/* code */
+.keyword {
+    color: #CF9FFF;
+    font-weight: bold;
+}
+
+.variable {
+    color: #8be9fd;
+    font-weight: bold;
+}
+
+.operator {
+    color: #c7254e;
+    font-weight: bold;
+}
+
+.string {
+    color: #FFCB6B;
+    font-weight: bold;
+}
+
+.comment {
+    color: #676E95;
+    font-style: italic;
 }
 
 /* Responsividade */
@@ -648,12 +788,13 @@ section {
         min-height: 100vh;
         padding: 100px 0;
     }
-    
+
     .hero-code-animation {
         margin-top: 3rem;
     }
-    
-    .service-card, .partnership-card {
+
+    .service-card,
+    .partnership-card {
         margin-bottom: 2rem;
     }
 }
@@ -662,16 +803,35 @@ section {
     .navbar-brand {
         font-size: 1.2rem;
     }
-    
-    h1, .h1 {
+
+    h1,
+    .h1 {
         font-size: 2.5rem;
     }
-    
-    h2, .h2 {
+
+    h2,
+    .h2 {
         font-size: 2rem;
     }
-    
+
     .contact-info {
         margin-bottom: 2rem;
+    }
+
+    .contact-details {
+        flex-direction: column;
+    }
+
+    .contact-details .contact-item {
+        width: 100%;
+        margin-bottom: 1rem;
+    }
+
+    .floating-whatsapp {
+        width: 50px;
+        height: 50px;
+        font-size: 24px;
+        bottom: 20px;
+        right: 20px;
     }
 }

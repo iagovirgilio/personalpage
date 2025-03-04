@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,8 +8,11 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <!-- Adicione o CSS do Prism -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism-okaidia.min.css">
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
     <header class="fixed-top">
         <nav class="navbar navbar-expand-lg navbar-dark">
@@ -38,8 +42,10 @@
         <div class="container h-100">
             <div class="row h-100 align-items-center">
                 <div class="col-lg-6" data-aos="fade-right" data-aos-duration="1000">
-                    <h1 class="display-4 fw-bold">Desenvolvimento Web para <span class="text-primary">Agências</span></h1>
-                    <p class="lead my-4">Sua agência precisa de um desenvolvedor confiável para criar sites e sistemas de qualidade? Sou especialista em WordPress, React, PHP e mais.</p>
+                    <h1 class="display-4 fw-bold color-hero">Desenvolvimento Web para <span
+                            class="text-primary">Agências</span></h1>
+                    <p class="lead my-4">Sua agência precisa de um desenvolvedor confiável para criar sites e sistemas
+                        de qualidade? Sou especialista em WordPress, React, PHP e mais.</p>
                     <div class="d-flex gap-3">
                         <a href="#partnership" class="btn btn-primary btn-lg">Parcerias</a>
                         <a href="#portfolio" class="btn btn-outline-light btn-lg">Ver Portfolio</a>
@@ -47,14 +53,17 @@
                 </div>
                 <div class="col-lg-6 d-none d-lg-block" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="300">
                     <div class="hero-code-animation">
-                        <pre><code class="language-javascript">
-    const solutions = {
-      wordpress: 'Sites completos e personalizados',
-      framer: 'Protótipos de alta fidelidade',
-      react: 'Interfaces modernas e responsivas',
-      php: 'Sistemas robustos e dinâmicos',
-      // Mais tecnologias, mais soluções...
-    };</code></pre>
+                        <pre>
+                            <code class="language-javascript">
+                                <span class="keyword">const</span> <span class="variable">solucoes</span> <span class="operator"> = </span>{
+                                wordpress: <span class="string">'Sites completos e personalizados'</span>,
+                                framer: <span class="string">'Protótipos de alta fidelidade'</span>,
+                                react: <span class="string">'Interfaces modernas e responsivas'</span>,
+                                php: <span class="string">'Sistemas robustos e dinâmicos'</span>,
+                                <span class="comment">// Mais tecnologias, mais soluções...</span>
+                                };
+                            </code>
+                        </pre>
                     </div>
                 </div>
             </div>
@@ -70,7 +79,7 @@
                 <h2 class="display-6 fw-bold">Serviços para Agências</h2>
                 <p class="lead">Soluções completas para complementar o portfólio da sua agência</p>
             </div>
-            
+
             <div class="row g-4">
                 <div class="col-md-4" data-aos="flip-left" data-aos-delay="100">
                     <div class="service-card">
@@ -78,7 +87,8 @@
                             <i class="fab fa-wordpress"></i>
                         </div>
                         <h3>WordPress Premium</h3>
-                        <p>Desenvolvimento de sites profissionais com WordPress, totalmente personalizados e otimizados para SEO.</p>
+                        <p>Desenvolvimento de sites profissionais com WordPress, totalmente personalizados e otimizados
+                            para SEO.</p>
                         <ul class="service-features">
                             <li><i class="fas fa-check"></i> Temas customizados</li>
                             <li><i class="fas fa-check"></i> Plugins personalizados</li>
@@ -87,7 +97,7 @@
                         </ul>
                     </div>
                 </div>
-                
+
                 <div class="col-md-4" data-aos="flip-left" data-aos-delay="200">
                     <div class="service-card">
                         <div class="icon-box">
@@ -103,7 +113,7 @@
                         </ul>
                     </div>
                 </div>
-                
+
                 <div class="col-md-4" data-aos="flip-left" data-aos-delay="300">
                     <div class="service-card">
                         <div class="icon-box">
@@ -148,7 +158,7 @@
                 <h2 class="display-6 fw-bold">Stack Tecnológico</h2>
                 <p class="lead">Conhecimento sólido e atualizado com as melhores tecnologias do mercado</p>
             </div>
-            
+
             <div class="row g-4">
                 <div class="col-lg-6" data-aos="fade-right">
                     <div class="skills-content pe-lg-5">
@@ -159,42 +169,46 @@
                                 <span>95%</span>
                             </div>
                             <div class="progress">
-                                <div class="progress-bar" role="progressbar" style="width: 95%" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div>
+                                <div class="progress-bar" role="progressbar" style="width: 95%" aria-valuenow="95"
+                                    aria-valuemin="0" aria-valuemax="100"></div>
                             </div>
                         </div>
-                        
+
                         <div class="skill-item mt-4">
                             <div class="d-flex justify-content-between mb-1">
                                 <span>React.js</span>
                                 <span>90%</span>
                             </div>
                             <div class="progress">
-                                <div class="progress-bar" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+                                <div class="progress-bar" role="progressbar" style="width: 90%" aria-valuenow="90"
+                                    aria-valuemin="0" aria-valuemax="100"></div>
                             </div>
                         </div>
-                        
+
                         <div class="skill-item mt-4">
                             <div class="d-flex justify-content-between mb-1">
                                 <span>Figma & Framer</span>
                                 <span>85%</span>
                             </div>
                             <div class="progress">
-                                <div class="progress-bar" role="progressbar" style="width: 85%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
+                                <div class="progress-bar" role="progressbar" style="width: 85%" aria-valuenow="85"
+                                    aria-valuemin="0" aria-valuemax="100"></div>
                             </div>
                         </div>
-                        
+
                         <div class="skill-item mt-4">
                             <div class="d-flex justify-content-between mb-1">
                                 <span>Bootstrap & UI Frameworks</span>
                                 <span>95%</span>
                             </div>
                             <div class="progress">
-                                <div class="progress-bar" role="progressbar" style="width: 95%" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div>
+                                <div class="progress-bar" role="progressbar" style="width: 95%" aria-valuenow="95"
+                                    aria-valuemin="0" aria-valuemax="100"></div>
                             </div>
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="col-lg-6" data-aos="fade-left">
                     <div class="skills-content ps-lg-5">
                         <h3 class="mb-4">Backend & CMS</h3>
@@ -204,37 +218,41 @@
                                 <span>98%</span>
                             </div>
                             <div class="progress">
-                                <div class="progress-bar" role="progressbar" style="width: 98%" aria-valuenow="98" aria-valuemin="0" aria-valuemax="100"></div>
+                                <div class="progress-bar" role="progressbar" style="width: 98%" aria-valuenow="98"
+                                    aria-valuemin="0" aria-valuemax="100"></div>
                             </div>
                         </div>
-                        
+
                         <div class="skill-item mt-4">
                             <div class="d-flex justify-content-between mb-1">
                                 <span>PHP</span>
                                 <span>92%</span>
                             </div>
                             <div class="progress">
-                                <div class="progress-bar" role="progressbar" style="width: 92%" aria-valuenow="92" aria-valuemin="0" aria-valuemax="100"></div>
+                                <div class="progress-bar" role="progressbar" style="width: 92%" aria-valuenow="92"
+                                    aria-valuemin="0" aria-valuemax="100"></div>
                             </div>
                         </div>
-                        
+
                         <div class="skill-item mt-4">
                             <div class="d-flex justify-content-between mb-1">
                                 <span>Python</span>
                                 <span>85%</span>
                             </div>
                             <div class="progress">
-                                <div class="progress-bar" role="progressbar" style="width: 85%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
+                                <div class="progress-bar" role="progressbar" style="width: 85%" aria-valuenow="85"
+                                    aria-valuemin="0" aria-valuemax="100"></div>
                             </div>
                         </div>
-                        
+
                         <div class="skill-item mt-4">
                             <div class="d-flex justify-content-between mb-1">
                                 <span>PostgreSQL & Bancos de Dados</span>
                                 <span>88%</span>
                             </div>
                             <div class="progress">
-                                <div class="progress-bar" role="progressbar" style="width: 88%" aria-valuenow="88" aria-valuemin="0" aria-valuemax="100"></div>
+                                <div class="progress-bar" role="progressbar" style="width: 88%" aria-valuenow="88"
+                                    aria-valuemin="0" aria-valuemax="100"></div>
                             </div>
                         </div>
                     </div>
@@ -249,7 +267,7 @@
                 <h2 class="display-6 fw-bold">Portfolio de Projetos</h2>
                 <p class="lead">Conheça alguns dos meus trabalhos recentes</p>
             </div>
-            
+
             <div class="portfolio-filter text-center mb-5" data-aos="fade-up">
                 <ul class="nav nav-pills justify-content-center mb-5" id="portfolio-filter">
                     <li class="nav-item">
@@ -269,12 +287,13 @@
                     </li>
                 </ul>
             </div>
-            
+
             <div class="row g-4 portfolio-items">
                 <!-- Projetos WordPress -->
                 <div class="col-md-6 col-lg-4 portfolio-item wordpress" data-aos="zoom-in">
                     <div class="portfolio-card">
-                        <img src="https://picsum.photos/seed/picsum/200/300" alt="WordPress Agency Site" class="img-fluid">
+                        <img src="https://picsum.photos/seed/picsum/200/300" alt="WordPress Agency Site"
+                            class="img-fluid">
                         <div class="portfolio-overlay">
                             <div class="portfolio-info">
                                 <h4>Site Corporativo</h4>
@@ -284,7 +303,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Mais projetos (adicione conforme necessário) -->
                 <div class="col-md-6 col-lg-4 portfolio-item webapps" data-aos="zoom-in">
                     <div class="portfolio-card">
@@ -298,7 +317,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="col-md-6 col-lg-4 portfolio-item ecommerce" data-aos="zoom-in">
                     <div class="portfolio-card">
                         <img src="https://picsum.photos/seed/picsum/200/300" alt="Online Store" class="img-fluid">
@@ -311,7 +330,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Adicione mais projetos seguindo o mesmo padrão -->
             </div>
         </div>
@@ -323,26 +342,11 @@
                 <h2 class="display-6 fw-bold">Modelo de Parcerias</h2>
                 <p class="lead">Pensado exclusivamente para agências de marketing</p>
             </div>
-            
-            <div class="row g-4">
-                <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
-                    <div class="partnership-card text-center">
-                        <div class="partnership-icon">
-                            <i class="fas fa-handshake"></i>
-                        </div>
-                        <h3>White Label</h3>
-                        <p>Desenvolvimento completo sob a marca da sua agência. Você vende, eu construo.</p>
-                        <ul class="partnership-features">
-                            <li>Seu logo e marca em todo o projeto</li>
-                            <li>Comunicação direta com seu time</li>
-                            <li>Documentação personalizada</li>
-                            <li>Suporte técnico especializado</li>
-                        </ul>
-                        <a href="#contact" class="btn btn-primary mt-3">Saber mais</a>
-                    </div>
-                </div>
+    
+            <div class="row justify-content-center g-4">
+                <!-- Removido o modelo White Label -->
                 
-                <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="col-lg-5 mx-lg-3" data-aos="fade-up" data-aos-delay="100">
                     <div class="partnership-card text-center highlight">
                         <div class="most-popular">Mais Popular</div>
                         <div class="partnership-icon">
@@ -359,8 +363,8 @@
                         <a href="#contact" class="btn btn-primary mt-3">Saber mais</a>
                     </div>
                 </div>
-                
-                <div class="col-lg-4" data-aos="fade-up" data-aos-delay="300">
+    
+                <div class="col-lg-5 mx-lg-3" data-aos="fade-up" data-aos-delay="200">
                     <div class="partnership-card text-center">
                         <div class="partnership-icon">
                             <i class="fas fa-project-diagram"></i>
@@ -386,54 +390,66 @@
                 <h2 class="display-6 fw-bold">O que as Agências Dizem</h2>
                 <p class="lead">Feedback de parceiros satisfeitos</p>
             </div>
-            
+
             <div class="testimonial-carousel" data-aos="fade-up">
                 <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
                     <div class="carousel-inner">
                         <div class="carousel-item active">
                             <div class="testimonial-item text-center">
                                 <div class="testimonial-avatar">
-                                    <img src="https://picsum.photos/seed/picsum/200/300" alt="Avatar" class="rounded-circle">
+                                    <img src="https://picsum.photos/seed/picsum/200/300" alt="Avatar"
+                                        class="rounded-circle">
                                 </div>
                                 <div class="testimonial-content">
-                                    <p class="testimonial-text">"Nossa agência conseguiu ampliar os serviços oferecidos graças à parceria com este desenvolvedor. Seus sites em WordPress são impecáveis e o código é sempre limpo e bem estruturado."</p>
+                                    <p class="testimonial-text">"Nossa agência conseguiu ampliar os serviços oferecidos
+                                        graças à parceria com este desenvolvedor. Seus sites em WordPress são impecáveis
+                                        e o código é sempre limpo e bem estruturado."</p>
                                     <h4 class="testimonial-name">Mariana Silva</h4>
                                     <p class="testimonial-position">Diretora de Marketing, Agência Impulso</p>
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div class="carousel-item">
                             <div class="testimonial-item text-center">
                                 <div class="testimonial-avatar">
-                                    <img src="https://picsum.photos/seed/picsum/200/300" alt="Avatar" class="rounded-circle">
+                                    <img src="https://picsum.photos/seed/picsum/200/300" alt="Avatar"
+                                        class="rounded-circle">
                                 </div>
                                 <div class="testimonial-content">
-                                    <p class="testimonial-text">"A capacidade técnica e a compreensão de negócios fazem toda a diferença. Temos conseguido entregar projetos complexos para nossos clientes com a tranquilidade de contar com um parceiro confiável."</p>
+                                    <p class="testimonial-text">"A capacidade técnica e a compreensão de negócios fazem
+                                        toda a diferença. Temos conseguido entregar projetos complexos para nossos
+                                        clientes com a tranquilidade de contar com um parceiro confiável."</p>
                                     <h4 class="testimonial-name">Ricardo Martins</h4>
                                     <p class="testimonial-position">CEO, Digital Growth</p>
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div class="carousel-item">
                             <div class="testimonial-item text-center">
                                 <div class="testimonial-avatar">
-                                    <img src="https://picsum.photos/seed/picsum/200/300" alt="Avatar" class="rounded-circle">
+                                    <img src="https://picsum.photos/seed/picsum/200/300" alt="Avatar"
+                                        class="rounded-circle">
                                 </div>
                                 <div class="testimonial-content">
-                                    <p class="testimonial-text">"O modelo de parceria white label nos permitiu expandir o portfolio sem aumentar nossos custos fixos. A qualidade e os prazos são impecáveis, e isso faz toda a diferença para nós."</p>
+                                    <p class="testimonial-text">"O modelo de parceria white label nos permitiu expandir
+                                        o portfolio sem aumentar nossos custos fixos. A qualidade e os prazos são
+                                        impecáveis, e isso faz toda a diferença para nós."</p>
                                     <h4 class="testimonial-name">Juliana Costa</h4>
                                     <p class="testimonial-position">Diretora de Projetos, Conecta Digital</p>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="carousel-indicators">
-                        <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                        <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                        <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                        <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="0" class="active"
+                            aria-current="true" aria-label="Slide 1"></button>
+                        <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="1"
+                            aria-label="Slide 2"></button>
+                        <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="2"
+                            aria-label="Slide 3"></button>
                     </div>
                 </div>
             </div>
@@ -445,7 +461,8 @@
             <div class="row">
                 <div class="col-lg-8 mx-auto text-center" data-aos="zoom-in">
                     <h2 class="display-6 fw-bold">Pronto para aumentar a capacidade técnica da sua agência?</h2>
-                    <p class="lead mb-4">Agende uma conversa para discutirmos como posso ajudar sua agência a entregar projetos de desenvolvimento web de alta qualidade.</p>
+                    <p class="lead mb-4">Agende uma conversa para discutirmos como posso ajudar sua agência a entregar
+                        projetos de desenvolvimento web de alta qualidade.</p>
                     <div class="cta-buttons">
                         <a href="#contact" class="btn btn-light btn-lg me-3">Entre em Contato</a>
                         <a href="#" class="btn btn-outline-light btn-lg">Ver Briefing</a>
@@ -455,116 +472,64 @@
         </div>
     </section>
 
+
     <section id="contact" class="py-5">
         <div class="container py-5">
             <div class="text-center mb-5" data-aos="fade-up">
                 <h2 class="display-6 fw-bold">Entre em Contato</h2>
                 <p class="lead">Vamos discutir como posso ajudar sua agência</p>
             </div>
-            
-            <div class="row">
-                <div class="col-lg-6" data-aos="fade-right">
-                    <div class="contact-info pe-lg-5">
+
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center" data-aos="fade-up">
+                    <div class="contact-info py-4">
                         <h3 class="mb-4">Informações de Contato</h3>
-                        <p class="lead">Estou disponível para discutir detalhes sobre possíveis parcerias e como posso agregar valor ao seu negócio.</p>
-                        
-                        <div class="contact-item d-flex align-items-center mt-4">
-                            <div class="contact-icon">
-                                <i class="fas fa-envelope"></i>
+                        <p class="lead mb-5">Estou disponível para discutir detalhes sobre possíveis parcerias e como
+                            posso agregar valor ao seu negócio. Clique no botão abaixo para iniciar uma conversa pelo
+                            WhatsApp.</p>
+
+                        <div class="contact-details d-flex flex-column flex-md-row justify-content-center gap-4 mb-5">
+                            <div class="contact-item d-flex align-items-center">
+                                <div class="contact-icon">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div class="contact-text">
+                                    <h5>Email</h5>
+                                    <p>iagovirgilio@gmail.com</p>
+                                </div>
                             </div>
-                            <div class="contact-text">
-                                <h5>Email</h5>
-                                <p>contato@seudominio.com</p>
+
+                            <div class="contact-item d-flex align-items-center">
+                                <div class="contact-icon">
+                                    <i class="fas fa-phone"></i>
+                                </div>
+                                <div class="contact-text">
+                                    <h5>Telefone</h5>
+                                    <p>+55 (75) 98131-1648</p>
+                                </div>
+                            </div>
+
+                            <div class="contact-item d-flex align-items-center">
+                                <div class="contact-icon">
+                                    <i class="fab fa-linkedin"></i>
+                                </div>
+                                <div class="contact-text">
+                                    <h5>LinkedIn</h5>
+                                    <p>linkedin.com/in/iagovirgilio</p>
+                                </div>
                             </div>
                         </div>
-                        
-                        <div class="contact-item d-flex align-items-center mt-4">
-                            <div class="contact-icon">
-                                <i class="fas fa-phone"></i>
-                            </div>
-                            <div class="contact-text">
-                                <h5>Telefone</h5>
-                                <p>+55 (XX) XXXXX-XXXX</p>
-                            </div>
-                        </div>
-                        
-                        <div class="contact-item d-flex align-items-center mt-4">
-                            <div class="contact-icon">
-                                <i class="fab fa-whatsapp"></i>
-                            </div>
-                            <div class="contact-text">
-                                <h5>WhatsApp</h5>
-                                <p>+55 (XX) XXXXX-XXXX</p>
-                            </div>
-                        </div>
-                        
-                        <div class="contact-item d-flex align-items-center mt-4">
-                            <div class="contact-icon">
-                                <i class="fab fa-linkedin"></i>
-                            </div>
-                            <div class="contact-text">
-                                <h5>LinkedIn</h5>
-                                <p>linkedin.com/in/seuusuario</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-lg-6" data-aos="fade-left">
-                    <div class="contact-form mt-5 mt-lg-0">
-                        <form id="contactForm">
-                            <div class="row g-3">
-                                <div class="col-md-6">
-                                    <div class="form-floating">
-                                        <input type="text" class="form-control" id="name" placeholder="Nome completo">
-                                        <label for="name">Nome completo</label>
-                                    </div>
-                                </div>
-                                
-                                <div class="col-md-6">
-                                    <div class="form-floating">
-                                        <input type="email" class="form-control" id="email" placeholder="Email">
-                                        <label for="email">Email</label>
-                                    </div>
-                                </div>
-                                
-                                <div class="col-12">
-                                    <div class="form-floating">
-                                        <input type="text" class="form-control" id="company" placeholder="Agência/Empresa">
-                                        <label for="company">Agência/Empresa</label>
-                                    </div>
-                                </div>
-                                
-                                <div class="col-12">
-                                    <div class="form-floating">
-                                        <select class="form-select" id="subject">
-                                            <option selected disabled>Selecione...</option>
-                                            <option value="white-label">Parceria White Label</option>
-                                            <option value="recurrent">Parceria Recorrente</option>
-                                            <option value="project">Projeto Específico</option>
-                                            <option value="other">Outro Assunto</option>
-                                        </select>
-                                        <label for="subject">Interesse</label>
-                                    </div>
-                                </div>
-                                
-                                <div class="col-12">
-                                    <div class="form-floating">
-                                        <textarea class="form-control" id="message" placeholder="Mensagem" style="height: 150px"></textarea>
-                                        <label for="message">Mensagem</label>
-                                    </div>
-                                </div>
-                                
-                                <div class="col-12">
-                                    <button type="submit" class="btn btn-primary btn-lg w-100">Enviar Mensagem</button>
-                                </div>
-                            </div>
-                        </form>
+
+                        <a href="https://wa.me/5575981311648?text=Olá,%20gostaria%20de%20saber%20mais%20sobre%20seus%20serviços%20de%20desenvolvimento%20web."
+                            class="btn btn-success btn-lg whatsapp-btn" target="_blank">
+                            <i class="fab fa-whatsapp me-2"></i> Fale comigo pelo WhatsApp
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
 
     <footer class="footer py-5 bg-dark text-white">
         <div class="container">
@@ -573,15 +538,18 @@
                     <a class="footer-brand mb-4 d-inline-block" href="#">
                         <span class="logo-text">Dev<span class="text-primary">Partner</span></span>
                     </a>
-                    <p class="mt-3">Desenvolvimento web especializado para agências de marketing digital, com foco em qualidade e tecnologias modernas.</p>
+                    <p class="mt-3">
+                        Desenvolvimento web especializado para agências de marketing digital, com foco em
+                        qualidade e tecnologias modernas.
+                    </p>
                     <div class="social-icons mt-4">
-                        <a href="#" class="social-icon"><i class="fab fa-github"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-behance"></i></a>
+                        <a href="https://github.com/iagovirgilio" class="social-icon" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/iagovirgilio/" class="social-icon" target="_blank"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://www.instagram.com/iago.virgilio/" class="social-icon" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.behance.net/iagovirgilio" class="social-icon" target="_blank"><i class="fab fa-behance"></i></a>
                     </div>
                 </div>
-                
+
                 <div class="col-md-4 col-lg-2 mb-4 mb-lg-0">
                     <h5 class="footer-title">Navegação</h5>
                     <ul class="footer-links">
@@ -593,7 +561,7 @@
                         <li><a href="#contact">Contato</a></li>
                     </ul>
                 </div>
-                
+
                 <div class="col-md-4 col-lg-2 mb-4 mb-lg-0">
                     <h5 class="footer-title">Serviços</h5>
                     <ul class="footer-links">
@@ -604,7 +572,7 @@
                         <li><a href="#">Sistemas Web</a></li>
                     </ul>
                 </div>
-                
+
                 <div class="col-md-4 col-lg-4">
                     <h5 class="footer-title">Newsletter</h5>
                     <p>Receba novidades e dicas sobre desenvolvimento web para agências</p>
@@ -616,16 +584,16 @@
                     </form>
                 </div>
             </div>
-            
+
             <hr class="mt-5 mb-4">
-            
+
             <div class="row align-items-center">
                 <div class="col-md-6 text-center text-md-start">
                     <p class="copyright mb-0">&copy; 2023 DevPartner. Todos os direitos reservados.</p>
                 </div>
                 <div class="col-md-6 text-center text-md-end mt-3 mt-md-0">
                     <p class="privacy-links mb-0">
-                        <a href="#">Termos de Uso</a> | 
+                        <a href="#">Termos de Uso</a> |
                         <a href="#">Política de Privacidade</a>
                     </p>
                 </div>
@@ -633,10 +601,18 @@
         </div>
     </footer>
 
-<!-- Scripts -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="js/main.js"></script>
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="js/main.js"></script>
+
+
+    <!-- Botão Flutuante de WhatsApp -->
+    <a href="https://wa.me/5575981311648?text=Olá,%20gostaria%20de%20saber%20mais%20sobre%20seus%20serviços%20de%20desenvolvimento%20web."
+        class="floating-whatsapp" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
 </body>
+
 </html>
