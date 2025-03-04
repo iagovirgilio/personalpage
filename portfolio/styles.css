@@ -755,7 +755,7 @@ a {
     transform: translateY(-5px);
 }
 
-/* code */
+/* code
 .keyword {
     color: #CF9FFF;
     font-weight: bold;
@@ -779,7 +779,7 @@ a {
 .comment {
     color: #676E95;
     font-style: italic;
-}
+} */
 
 /* Responsividade */
 @media (max-width: 991px) {
