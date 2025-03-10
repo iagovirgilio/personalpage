@@ -1,20 +1,894 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="O Método CPE: 100 Prompts Essenciais para Infoprodutores">
+    <meta name="author" content="Iago Virgílio">
+    <meta name="keywords" content="gpt, chat, inteligência artificial">
+    <meta name="theme-color" content="#4a148c">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#4a148c">
     <title>O Método CPE: 100 Prompts Essenciais para Infoprodutores</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@400;600;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Reset e Base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            color: #333;
+            line-height: 1.6;
+            background-color: #f9f9f9;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: 'Montserrat', sans-serif;
+            margin-bottom: 20px;
+            color: #1a1a1a;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        a {
+            text-decoration: none;
+            color: #3d7ad6;
+        }
+
+        ul,
+        ol {
+            margin-left: 20px;
+            margin-bottom: 20px;
+        }
+
+        section {
+            padding: 60px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 32px;
+            font-weight: 800;
+            margin-bottom: 40px;
+            color: #222;
+            text-transform: uppercase;
+        }
+
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 26px;
+            }
+        }
+
+        /* Buttons */
+        .cta-button {
+            display: inline-block;
+            padding: 12px 28px;
+            border-radius: 6px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 16px;
+            text-align: center;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button.primary {
+            background-color: #ff6b00;
+            color: white;
+            box-shadow: 0 4px 10px rgba(255, 107, 0, 0.3);
+        }
+
+        .cta-button.primary:hover {
+            background-color: #e66000;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(255, 107, 0, 0.4);
+        }
+
+        .cta-button.big {
+            padding: 16px 36px;
+            font-size: 18px;
+            width: 100%;
+            max-width: 500px;
+            margin: 20px auto;
+            display: block;
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 4px 10px rgba(255, 107, 0, 0.3);
+            }
+
+            50% {
+                transform: scale(1.05);
+                box-shadow: 0 8px 20px rgba(255, 107, 0, 0.5);
+            }
+
+            100% {
+                transform: scale(1);
+                box-shadow: 0 4px 10px rgba(255, 107, 0, 0.3);
+            }
+        }
+
+        /* Header/Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #3d7ad6 0%, #2b5ca5 100%);
+            color: white;
+            padding: 60px 0;
+            overflow: hidden;
+        }
+
+        .hero .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .hero-content {
+            flex: 1;
+            max-width: 600px;
+        }
+
+        .pre-headline {
+            display: inline-block;
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .headline {
+            font-size: 42px;
+            line-height: 1.2;
+            font-weight: 800;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .subheadline {
+            font-size: 18px;
+            font-weight: 400;
+            margin-bottom: 30px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .hero-image {
+            flex: 0 0 40%;
+            position: relative;
+            text-align: center;
+        }
+
+        .ebook-mockup {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            transform: perspective(1000px) rotateY(-15deg);
+            transition: all 0.5s ease;
+        }
+
+        .ebook-mockup:hover {
+            transform: perspective(1000px) rotateY(-5deg);
+        }
+
+        .discount-badge {
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            width: 100px;
+            height: 100px;
+            background-color: #ff6b00;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 15px rgba(255, 107, 0, 0.5);
+            transform: rotate(15deg);
+            animation: float 3s ease-in-out infinite;
+            z-index: 2;
+        }
+
+        @keyframes float {
+            0% {
+                transform: rotate(15deg) translateY(0px);
+            }
+
+            50% {
+                transform: rotate(15deg) translateY(-10px);
+            }
+
+            100% {
+                transform: rotate(15deg) translateY(0px);
+            }
+        }
+
+        .discount-text {
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .discount-price {
+            font-size: 24px;
+            font-weight: 800;
+        }
+
+        @media (max-width: 992px) {
+            .hero .container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero-content {
+                margin-bottom: 40px;
+            }
+
+            .headline {
+                font-size: 36px;
+            }
+
+            .subheadline {
+                font-size: 16px;
+            }
+
+            .hero-image {
+                max-width: 350px;
+            }
+        }
+
+        /* Pain Points Section */
+        .pain-points {
+            background-color: #fff;
+        }
+
+        .points-list {
+            margin-bottom: 30px;
+        }
+
+        .point {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .point:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .point i {
+            color: #ff6b00;
+            font-size: 24px;
+            margin-right: 15px;
+            margin-top: 2px;
+        }
+
+        .point p {
+            margin-bottom: 0;
+        }
+
+        .pain-conclusion {
+            font-size: 20px;
+            text-align: center;
+            margin-top: 30px;
+            font-weight: 600;
+            color: #222;
+        }
+
+        .pain-conclusion strong {
+            color: #ff6b00;
+        }
+
+        /* Problem Section */
+        .problem {
+            background-color: #f2f7ff;
+        }
+
+        .problem-intro {
+            font-size: 20px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .problem-list {
+            margin-left: 0;
+            list-style: none;
+        }
+
+        .problem-list li {
+            padding: 15px 0;
+            border-bottom: 1px dashed #ddd;
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .problem-list li:before {
+            content: "•";
+            color: #ff6b00;
+            font-size: 24px;
+            position: absolute;
+            left: 0;
+            top: 10px;
+        }
+
+        .problem-conclusion {
+            margin-top: 30px;
+            font-size: 18px;
+        }
+
+        /* Solution Section */
+        .solution {
+            background-color: #fff;
+        }
+
+        .solution-content {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .solution-text {
+            flex: 1;
+        }
+
+        .solution-image {
+            flex: 1;
+            text-align: center;
+        }
+
+        .solution-mockup {
+            max-width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        @media (max-width: 768px) {
+            .solution-content {
+                flex-direction: column-reverse;
+            }
+        }
+
+        /* Benefits Section */
+        .benefits {
+            background-color: #f2f7ff;
+        }
+
+        .benefits-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .benefit {
+            display: flex;
+            align-items: flex-start;
+            background-color: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .benefit:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .benefit i {
+            color: #3d7ad6;
+            font-size: 24px;
+            margin-right: 15px;
+            margin-top: 2px;
+        }
+
+        .benefit p {
+            margin-bottom: 0;
+        }
+
+        /* Content Section */
+        .content {
+            background-color: #fff;
+        }
+
+        .modules {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .module {
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .module:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .module-icon {
+            width: 50px;
+            height: 50px;
+            background-color: #3d7ad6;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .module-icon i {
+            color: white;
+            font-size: 22px;
+        }
+
+        .module h3 {
+            font-size: 18px;
+            margin-bottom: 15px;
+            color: #222;
+        }
+
+        .module ul {
+            margin-left: 20px;
+        }
+
+        .module ul li {
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .modules {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            background-color: #f2f7ff;
+            position: relative;
+        }
+
+        .testimonials-slider {
+            max-width: 800px;
+            margin: 0 auto;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .testimonial {
+            padding: 0 20px;
+        }
+
+        .testimonial-content {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            position: relative;
+            margin-bottom: 15px;
+        }
+
+        .testimonial-content:before {
+            content: "'";
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 60px;
+            font-family: Georgia, serif;
+            color: #f2f2f2;
+            z-index: 0;
+        }
+
+        .testimonial-content p {
+            position: relative;
+            z-index: 1;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .author-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            margin-right: 15px;
+        }
+
+        .author-name {
+            font-weight: 600;
+            margin-bottom: 0;
+        }
+
+        .testimonial-nav {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .testimonial-nav button {
+            background-color: transparent;
+            border: 2px solid #3d7ad6;
+            color: #3d7ad6;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            margin: 0 10px;
+            transition: all 0.3s ease;
+        }
+
+        .testimonial-nav button:hover {
+            background-color: #3d7ad6;
+            color: white;
+        }
+
+        /* Author Section */
+        .author {
+            background-color: #fff;
+        }
+
+        .author-content {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .author-image {
+            flex: 0 0 300px;
+        }
+
+        .author-img {
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .author-text {
+            flex: 1;
+        }
+
+        @media (max-width: 768px) {
+            .author-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .author-image {
+                margin-bottom: 20px;
+            }
+        }
+
+        /* Offer Section */
+        .offer {
+            background: linear-gradient(135deg, #2b5ca5 0%, #3d7ad6 100%);
+            color: white;
+            padding: 80px 0;
+        }
+
+        .offer .section-title {
+            color: white;
+        }
+
+        .offer-box {
+            background-color: white;
+            border-radius: 10px;
+            padding: 40px;
+            max-width: 800px;
+            margin: 0 auto;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+            color: #333;
+        }
+
+        .price-tag {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .original-price {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .line-through {
+            text-decoration: line-through;
+            color: #999;
+        }
+
+        .current-price {
+            font-size: 22px;
+        }
+
+        .current-price h3 {
+            font-size: 48px;
+            color: #ff6b00;
+            margin: 10px 0;
+        }
+
+        .offer-limit {
+            font-size: 16px;
+            font-weight: 600;
+            color: #666;
+        }
+
+        .bonus-section {
+            margin: 40px 0;
+            border-top: 2px dashed #eee;
+            border-bottom: 2px dashed #eee;
+            padding: 30px 0;
+        }
+
+        .bonus-section h3 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #222;
+        }
+
+        .bonus {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 25px;
+        }
+
+        .bonus-icon {
+            flex: 0 0 50px;
+            height: 50px;
+            background-color: #ffebdc;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+        }
+
+        .bonus-icon i {
+            color: #ff6b00;
+            font-size: 24px;
+        }
+
+        .bonus-text h4 {
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        .bonus-value {
+            font-weight: 600;
+            color: #ff6b00;
+            margin-top: 5px;
+        }
+
+        .guarantee {
+            display: flex;
+            align-items: center;
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+
+        .guarantee-icon {
+            flex: 0 0 60px;
+            height: 60px;
+            background-color: #eff6ff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+        }
+
+        .guarantee-icon i {
+            color: #3d7ad6;
+            font-size: 28px;
+        }
+
+        .guarantee-text h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .payment-methods {
+            text-align: center;
+            margin-top: 20px;
+            color: #666;
+        }
+
+        .methods-icons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 10px 0;
+            font-size: 24px;
+            color: #777;
+        }
+
+        .secure-payment {
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
+
+        /* FAQ Section */
+        .faq {
+            background-color: #f9f9f9;
+        }
+
+        .faq-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            margin-bottom: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 20px;
+            background-color: white;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-question h3 {
+            margin-bottom: 0;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .faq-question i {
+            font-size: 18px;
+            color: #3d7ad6;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            padding: 0 20px;
+            background-color: #f9f9f9;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 20px;
+            max-height: 500px;
+        }
+
+        /* Final CTA Section */
+        .final-cta {
+            background-color: #fff;
+            text-align: center;
+        }
+
+        .highlight-text {
+            font-size: 20px;
+            font-weight: 600;
+            color: #222;
+            margin: 30px 0;
+        }
+
+        .final-testimonial {
+            max-width: 800px;
+            margin: 40px auto;
+            font-style: italic;
+            padding: 30px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .testimonial-name {
+            font-weight: 600;
+            font-style: normal;
+            margin-top: 10px;
+            color: #444;
+        }
+
+        .ps-text {
+            font-size: 16px;
+            font-style: italic;
+            color: #666;
+            max-width: 800px;
+            margin: 30px auto;
+        }
+
+        .closing-statement {
+            font-size: 18px;
+            font-weight: 600;
+            color: #3d7ad6;
+            margin-top: 40px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #222;
+            color: #ccc;
+            padding: 30px 0;
+            text-align: center;
+        }
+
+        .footer-links {
+            margin-top: 15px;
+        }
+
+        .footer-links a {
+            color: #aaa;
+            margin: 0 10px;
+            font-size: 14px;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+    </style>
 </head>
+
 <body>
     <header class="hero">
         <div class="container">
             <div class="hero-content">
                 <span class="pre-headline">EBOOK EXCLUSIVO</span>
                 <h1 class="headline">DOMINE A ARTE DOS PROMPTS E TRANSFORME IAs EM SEUS ASSISTENTES PESSOAIS</h1>
-                <h2 class="subheadline">Descubra o Método CPE: o framework que está ajudando infoprodutores a produzir conteúdo 10x mais rápido, aumentar engajamento e economizar centenas de reais em terceirização</h2>
+                <h2 class="subheadline">Descubra o Método CPE: o framework que está ajudando infoprodutores a produzir
+                    conteúdo 10x mais rápido, aumentar engajamento e economizar centenas de reais em terceirização</h2>
                 <a href="#oferta" class="cta-button primary pulse">QUERO OS 100 PROMPTS AGORA!</a>
             </div>
             <div class="hero-image">
@@ -33,27 +907,33 @@
             <div class="points-list">
                 <div class="point">
                     <i class="fas fa-times-circle"></i>
-                    <p><strong>Frustrado</strong> com respostas genéricas e superficiais de IAs, perdendo tempo com várias tentativas...</p>
+                    <p><strong>Frustrado</strong> com respostas genéricas e superficiais de IAs, perdendo tempo com
+                        várias tentativas...</p>
                 </div>
                 <div class="point">
                     <i class="fas fa-times-circle"></i>
-                    <p><strong>Sobrecarregado</strong> com a quantidade de conteúdo que precisa criar diariamente para suas redes sociais...</p>
+                    <p><strong>Sobrecarregado</strong> com a quantidade de conteúdo que precisa criar diariamente para
+                        suas redes sociais...</p>
                 </div>
                 <div class="point">
                     <i class="fas fa-times-circle"></i>
-                    <p><strong>Inseguro</strong> se está aproveitando todo potencial da inteligência artificial para seu infoproduto...</p>
+                    <p><strong>Inseguro</strong> se está aproveitando todo potencial da inteligência artificial para seu
+                        infoproduto...</p>
                 </div>
                 <div class="point">
                     <i class="fas fa-times-circle"></i>
-                    <p><strong>Cansado</strong> de gastar horas redigindo emails, posts e materiais que poderiam ser feitos em minutos...</p>
+                    <p><strong>Cansado</strong> de gastar horas redigindo emails, posts e materiais que poderiam ser
+                        feitos em minutos...</p>
                 </div>
                 <div class="point">
                     <i class="fas fa-times-circle"></i>
-                    <p><strong>Preocupado</strong> com o tempo desperdiçado tentando encontrar prompts eficazes na internet...</p>
+                    <p><strong>Preocupado</strong> com o tempo desperdiçado tentando encontrar prompts eficazes na
+                        internet...</p>
                 </div>
             </div>
             <div class="pain-conclusion">
-                <p>Se você respondeu SIM para qualquer uma dessas perguntas, você <strong>PRECISA</strong> conhecer o Método CPE.</p>
+                <p>Se você respondeu SIM para qualquer uma dessas perguntas, você <strong>PRECISA</strong> conhecer o
+                    Método CPE.</p>
             </div>
         </div>
     </section>
@@ -61,8 +941,10 @@
     <section class="problem">
         <div class="container">
             <h2 class="section-title">A REALIDADE DOS INFOPRODUTORES HOJE</h2>
-            <p class="problem-intro">Todo infoprodutor sabe: <strong>criar conteúdo de qualidade consistentemente é um dos maiores desafios</strong> do negócio.</p>
-            <p>Com o surgimento das IAs, muitos viram a oportunidade de otimizar esse processo. No entanto, a realidade tem sido diferente:</p>
+            <p class="problem-intro">Todo infoprodutor sabe: <strong>criar conteúdo de qualidade consistentemente é um
+                    dos maiores desafios</strong> do negócio.</p>
+            <p>Com o surgimento das IAs, muitos viram a oportunidade de otimizar esse processo. No entanto, a realidade
+                tem sido diferente:</p>
             <ul class="problem-list">
                 <li>Prompts mal estruturados que geram conteúdo medíocre</li>
                 <li>Horas perdidas tentando "adivinhar" como extrair bons resultados</li>
@@ -70,7 +952,9 @@
                 <li>Inconsistência nos resultados obtidos</li>
                 <li>Dificuldade para adaptar exemplos encontrados na internet para seu contexto específico</li>
             </ul>
-            <p class="problem-conclusion"><strong>O resultado?</strong> Muitos infoprodutores acabam abandonando as ferramentas de IA ou subutilizando seu potencial, voltando ao ciclo de sobrecarga de trabalho ou altos custos com terceirização.</p>
+            <p class="problem-conclusion"><strong>O resultado?</strong> Muitos infoprodutores acabam abandonando as
+                ferramentas de IA ou subutilizando seu potencial, voltando ao ciclo de sobrecarga de trabalho ou altos
+                custos com terceirização.</p>
         </div>
     </section>
 
@@ -79,9 +963,14 @@
             <h2 class="section-title">APRESENTANDO O MÉTODO CPE: SUA FÓRMULA PARA DOMINAR PROMPTS</h2>
             <div class="solution-content">
                 <div class="solution-text">
-                    <p>Após meses de testes e refinamentos, desenvolvi um framework simples mas extraordinariamente eficaz para criar prompts que geram resultados excepcionais <strong>em qualquer ferramenta de IA</strong>.</p>
-                    <p>O <strong>Método CPE (Contexto, Papel, Expectativa)</strong> é uma estrutura de 3 componentes que transforma a maneira como você interage com inteligências artificiais, garantindo respostas personalizadas, focadas e de alta qualidade - na primeira tentativa.</p>
-                    <p>E agora, compilei <strong>100 prompts prontos</strong> baseados neste método, especificamente criados para as necessidades de infoprodutores.</p>
+                    <p>Após meses de testes e refinamentos, desenvolvi um framework simples mas extraordinariamente
+                        eficaz para criar prompts que geram resultados excepcionais <strong>em qualquer ferramenta de
+                            IA</strong>.</p>
+                    <p>O <strong>Método CPE (Contexto, Papel, Expectativa)</strong> é uma estrutura de 3 componentes que
+                        transforma a maneira como você interage com inteligências artificiais, garantindo respostas
+                        personalizadas, focadas e de alta qualidade - na primeira tentativa.</p>
+                    <p>E agora, compilei <strong>100 prompts prontos</strong> baseados neste método, especificamente
+                        criados para as necessidades de infoprodutores.</p>
                 </div>
                 <div class="solution-image">
                     <img src="cpe.jpeg" alt="Método CPE Explicado" class="solution-mockup">
@@ -100,7 +989,8 @@
                 </div>
                 <div class="benefit">
                     <i class="fas fa-check-circle"></i>
-                    <p><strong>Produza conteúdo mais engajador</strong> em todas as plataformas (Instagram, YouTube, Email, etc.)</p>
+                    <p><strong>Produza conteúdo mais engajador</strong> em todas as plataformas (Instagram, YouTube,
+                        Email, etc.)</p>
                 </div>
                 <div class="benefit">
                     <i class="fas fa-check-circle"></i>
@@ -112,7 +1002,8 @@
                 </div>
                 <div class="benefit">
                     <i class="fas fa-check-circle"></i>
-                    <p><strong>Desbloqueie sua criatividade</strong> com estruturas que podem ser adaptadas para qualquer situação</p>
+                    <p><strong>Desbloqueie sua criatividade</strong> com estruturas que podem ser adaptadas para
+                        qualquer situação</p>
                 </div>
                 <div class="benefit">
                     <i class="fas fa-check-circle"></i>
@@ -219,27 +1110,34 @@
             <div class="testimonials-slider">
                 <div class="testimonial">
                     <div class="testimonial-content">
-                        <p>"Usando apenas o prompt #16 para headlines, consegui aumentar a taxa de conversão da minha página de vendas em 23%. Esse ebook já se pagou mais de 10 vezes!"</p>
+                        <p>"Usando apenas o prompt #16 para headlines, consegui aumentar a taxa de conversão da minha
+                            página de vendas em 23%. Esse ebook já se pagou mais de 10 vezes!"</p>
                         <div class="testimonial-author">
-                            <img src="https://plus.unsplash.com/premium_photo-1671656349218-5218444643d8?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Carlos M." class="author-img">
+                            <img src="https://plus.unsplash.com/premium_photo-1671656349218-5218444643d8?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                                alt="Carlos M." class="author-img">
                             <p class="author-name">Carlos M., Coach de Produtividade</p>
                         </div>
                     </div>
                 </div>
                 <div class="testimonial">
                     <div class="testimonial-content">
-                        <p>"Economizei R$1.500 que gastava mensalmente com copywriter usando os prompts de emails e posts para Instagram. A qualidade está incrível e agora consigo publicar todos os dias sem estresse."</p>
+                        <p>"Economizei R$1.500 que gastava mensalmente com copywriter usando os prompts de emails e
+                            posts para Instagram. A qualidade está incrível e agora consigo publicar todos os dias sem
+                            estresse."</p>
                         <div class="testimonial-author">
-                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Mariana S." class="author-img">
+                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                                alt="Mariana S." class="author-img">
                             <p class="author-name">Mariana S., Especialista em Emagrecimento</p>
                         </div>
                     </div>
                 </div>
                 <div class="testimonial">
                     <div class="testimonial-content">
-                        <p>"O prompt de estrutura de curso (#31) me ajudou a organizar meu infoproduto em tempo recorde. Meus alunos estão elogiando a clareza e organização do material."</p>
+                        <p>"O prompt de estrutura de curso (#31) me ajudou a organizar meu infoproduto em tempo recorde.
+                            Meus alunos estão elogiando a clareza e organização do material."</p>
                         <div class="testimonial-author">
-                            <img src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Roberto L." class="author-img">
+                            <img src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                                alt="Roberto L." class="author-img">
                             <p class="author-name">Roberto L., Instrutor de Marketing Digital</p>
                         </div>
                     </div>
@@ -260,9 +1158,13 @@
                     <img src="autor.jpeg" alt="Autor do Método CPE" class="author-img">
                 </div>
                 <div class="author-text">
-                    <p>Além de ser webdesigner e desenvolvedor há mais de 5 anos, sou especialista em tecnologias emergentes e otimização de processos criativos.</p>
-                    <p>Nos últimos 18 meses, tenho me dedicado intensivamente a testar e refinar prompts para inteligência artificial, desenvolvendo o Método CPE após analisar milhares de interações e resultados.</p>
-                    <p>Este ebook é fruto não apenas de pesquisa teórica, mas de aplicação prática e resultados reais no mercado de infoprodutos.</p>
+                    <p>Além de ser webdesigner e desenvolvedor há mais de 5 anos, sou especialista em tecnologias
+                        emergentes e otimização de processos criativos.</p>
+                    <p>Nos últimos 18 meses, tenho me dedicado intensivamente a testar e refinar prompts para
+                        inteligência artificial, desenvolvendo o Método CPE após analisar milhares de interações e
+                        resultados.</p>
+                    <p>Este ebook é fruto não apenas de pesquisa teórica, mas de aplicação prática e resultados reais no
+                        mercado de infoprodutos.</p>
                 </div>
             </div>
         </div>
@@ -307,11 +1209,14 @@
                     </div>
                     <div class="guarantee-text">
                         <h3>GARANTIA INCONDICIONAL DE 7 DIAS</h3>
-                        <p>Se nos próximos 7 dias você não ficar 100% satisfeito com o conteúdo, ou não conseguir implementar pelo menos um dos prompts com sucesso, basta solicitar o reembolso total do seu investimento.</p>
+                        <p>Se nos próximos 7 dias você não ficar 100% satisfeito com o conteúdo, ou não conseguir
+                            implementar pelo menos um dos prompts com sucesso, basta solicitar o reembolso total do seu
+                            investimento.</p>
                         <p>Sem perguntas, sem burocracia.</p>
                     </div>
                 </div>
-                <a href="https://pay.hotmart.com/SEUPRODUTO" class="cta-button primary pulse big">QUERO TER ACESSO AOS 100 PROMPTS AGORA!</a>
+                <a href="https://pay.hotmart.com/SEUPRODUTO" class="cta-button primary pulse big">QUERO TER ACESSO AOS
+                    100 PROMPTS AGORA!</a>
                 <div class="payment-methods">
                     <p>Pague com:</p>
                     <div class="methods-icons">
@@ -339,7 +1244,8 @@
                         <i class="fas fa-chevron-down"></i>
                     </div>
                     <div class="faq-answer">
-                        <p>Não, o ebook foi criado para ser acessível tanto para iniciantes quanto usuários avançados. Cada prompt vem com instruções claras de utilização.</p>
+                        <p>Não, o ebook foi criado para ser acessível tanto para iniciantes quanto usuários avançados.
+                            Cada prompt vem com instruções claras de utilização.</p>
                     </div>
                 </div>
                 <div class="faq-item">
@@ -348,7 +1254,9 @@
                         <i class="fas fa-chevron-down"></i>
                     </div>
                     <div class="faq-answer">
-                        <p>Os prompts foram desenvolvidos para funcionar em qualquer ferramenta baseada em LLM, como ChatGPT, Claude, Bard e outras plataformas populares, com pequenas adaptações quando necessário.</p>
+                        <p>Os prompts foram desenvolvidos para funcionar em qualquer ferramenta baseada em LLM, como
+                            ChatGPT, Claude, Bard e outras plataformas populares, com pequenas adaptações quando
+                            necessário.</p>
                     </div>
                 </div>
                 <div class="faq-item">
@@ -357,7 +1265,8 @@
                         <i class="fas fa-chevron-down"></i>
                     </div>
                     <div class="faq-answer">
-                        <p>Você pode implementar seu primeiro prompt em menos de 5 minutos após acessar o material. Os resultados são imediatos - você terá conteúdo pronto para usar na primeira tentativa.</p>
+                        <p>Você pode implementar seu primeiro prompt em menos de 5 minutos após acessar o material. Os
+                            resultados são imediatos - você terá conteúdo pronto para usar na primeira tentativa.</p>
                     </div>
                 </div>
                 <div class="faq-item">
@@ -366,7 +1275,8 @@
                         <i class="fas fa-chevron-down"></i>
                     </div>
                     <div class="faq-answer">
-                        <p>Sim! Os prompts são estruturados para serem facilmente adaptáveis para qualquer nicho ou segmento. Incluímos instruções específicas de personalização para cada um.</p>
+                        <p>Sim! Os prompts são estruturados para serem facilmente adaptáveis para qualquer nicho ou
+                            segmento. Incluímos instruções específicas de personalização para cada um.</p>
                     </div>
                 </div>
                 <div class="faq-item">
@@ -375,7 +1285,8 @@
                         <i class="fas fa-chevron-down"></i>
                     </div>
                     <div class="faq-answer">
-                        <p>Sim! Ao adquirir o ebook, você terá acesso a todas as atualizações e prompts adicionais que forem incluídos nos próximos 6 meses, sem custo adicional.</p>
+                        <p>Sim! Ao adquirir o ebook, você terá acesso a todas as atualizações e prompts adicionais que
+                            forem incluídos nos próximos 6 meses, sem custo adicional.</p>
                     </div>
                 </div>
                 <div class="faq-item">
@@ -384,7 +1295,8 @@
                         <i class="fas fa-chevron-down"></i>
                     </div>
                     <div class="faq-answer">
-                        <p>Imediatamente após a confirmação do pagamento, você receberá um email com as instruções de acesso à área de membros onde poderá baixar o ebook em formato PDF.</p>
+                        <p>Imediatamente após a confirmação do pagamento, você receberá um email com as instruções de
+                            acesso à área de membros onde poderá baixar o ebook em formato PDF.</p>
                     </div>
                 </div>
             </div>
@@ -395,15 +1307,22 @@
         <div class="container">
             <h2 class="section-title">A DECISÃO É SUA AGORA</h2>
             <p>Você pode continuar lutando para criar conteúdo manualmente, gastando horas preciosas do seu dia...</p>
-            <p>Ou pode acessar agora mesmo um sistema comprovado com 100 prompts prontos para transformar sua produtividade.</p>
-            <p class="highlight-text">Com menos de 1 hora do seu tempo investido na leitura, você pode transformar permanentemente sua relação com criação de conteúdo.</p>
+            <p>Ou pode acessar agora mesmo um sistema comprovado com 100 prompts prontos para transformar sua
+                produtividade.</p>
+            <p class="highlight-text">Com menos de 1 hora do seu tempo investido na leitura, você pode transformar
+                permanentemente sua relação com criação de conteúdo.</p>
             <a href="#oferta" class="cta-button primary pulse big">SIM! QUERO ACESSO AOS 100 PROMPTS DO MÉTODO CPE</a>
             <div class="final-testimonial">
-                <p>"Antes do Método CPE, eu passava cerca de 3 horas por dia criando conteúdo para minhas redes e produtos. Agora, faço tudo em menos de 40 minutos com qualidade muito superior. Este é o recurso que todo infoprodutor deveria ter."</p>
+                <p>"Antes do Método CPE, eu passava cerca de 3 horas por dia criando conteúdo para minhas redes e
+                    produtos. Agora, faço tudo em menos de 40 minutos com qualidade muito superior. Este é o recurso que
+                    todo infoprodutor deveria ter."</p>
                 <p class="testimonial-name">- Amanda R., Criadora de Conteúdo e Infoprodutora</p>
             </div>
-            <p class="ps-text">P.S.: Lembre-se que você tem garantia de 7 dias para testar o material sem risco algum. Um único prompt bem aplicado pode gerar conteúdo que custaria centenas de reais para terceirizar. Com 100 prompts à sua disposição, o potencial de retorno sobre seu investimento é imenso.</p>
-            <p class="closing-statement">Transforme sua produtividade hoje. Seus concorrentes já estão usando IA - a questão é: quem está fazendo melhor?</p>
+            <p class="ps-text">P.S.: Lembre-se que você tem garantia de 7 dias para testar o material sem risco algum.
+                Um único prompt bem aplicado pode gerar conteúdo que custaria centenas de reais para terceirizar. Com
+                100 prompts à sua disposição, o potencial de retorno sobre seu investimento é imenso.</p>
+            <p class="closing-statement">Transforme sua produtividade hoje. Seus concorrentes já estão usando IA - a
+                questão é: quem está fazendo melhor?</p>
         </div>
     </section>
 
@@ -418,6 +1337,109 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // FAQ Accordion
+            const faqItems = document.querySelectorAll('.faq-item');
+
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+
+                question.addEventListener('click', () => {
+                    // Close all other items
+                    faqItems.forEach(otherItem => {
+                        if (otherItem !== item && otherItem.classList.contains('active')) {
+                            otherItem.classList.remove('active');
+                        }
+                    });
+
+                    // Toggle current item
+                    item.classList.toggle('active');
+                });
+            });
+
+            // Testimonial Slider
+            const testimonials = document.querySelectorAll('.testimonial');
+            const prevButton = document.querySelector('.prev');
+            const nextButton = document.querySelector('.next');
+            let currentSlide = 0;
+
+            // Hide all testimonials except first
+            testimonials.forEach((testimonial, index) => {
+                if (index !== 0) {
+                    testimonial.style.display = 'none';
+                }
+            });
+
+            // Next button functionality
+            nextButton.addEventListener('click', () => {
+                testimonials[currentSlide].style.display = 'none';
+                currentSlide = (currentSlide + 1) % testimonials.length;
+                testimonials[currentSlide].style.display = 'block';
+            });
+
+            // Previous button functionality
+            prevButton.addEventListener('click', () => {
+                testimonials[currentSlide].style.display = 'none';
+                currentSlide = (currentSlide - 1 + testimonials.length) % testimonials.length;
+                testimonials[currentSlide].style.display = 'block';
+            });
+
+            // Smooth scroll for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // Countdown timer functionality (optional)
+            // You can uncomment and customize this if you want a countdown timer
+            /*
+            const countdownDate = new Date();
+            countdownDate.setDate(countdownDate.getDate() + 3); // 3 days from now
+            
+            function updateCountdown() {
+                const now = new Date().getTime();
+                const distance = countdownDate - now;
+                
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                
+                document.getElementById("countdown").innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+                
+                if (distance < 0) {
+                    clearInterval(countdownTimer);
+                    document.getElementById("countdown").innerHTML = "OFERTA ENCERRADA";
+                }
+            }
+            
+            const countdownTimer = setInterval(updateCountdown, 1000);
+            updateCountdown();
+            */
+
+            // Add class to header on scroll
+            window.addEventListener('scroll', function () {
+                const header = document.querySelector('header');
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+        });
+    </script>
 </body>
+
 </html>
