@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quer Ir Além? Descubra o Método CPE Completo!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #3d7ad6;
+            --primary-dark: #2b5ca5;
+            --secondary: #ff6b00;
+            --background: #f4f7f6;
+            --text-dark: #2c3e50;
+            --text-light: #555;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--background);
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .header {
+            margin-bottom: 40px;
+        }
+
+        .header h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .subheadline {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+
+        .ebook-preview {
+            max-width: 400px;
+            margin: 0 auto 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border-radius: 10px;
+        }
+
+        .benefits {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .benefit {
+            background-color: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .benefit:hover {
+            transform: translateY(-5px);
+        }
+
+        .benefit-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .benefit h3 {
+            font-family: 'Montserrat', sans-serif;
+            margin-bottom: 10px;
+            color: var(--primary-dark);
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--secondary);
+            color: white;
+            padding: 15px 30px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            text-decoration: none;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+            box-shadow: 0 10px 20px rgba(255,107,0,0.3);
+        }
+
+        .cta-button:hover {
+            background-color: #e65100;
+            transform: translateY(-3px);
+            box-shadow: 0 15px 25px rgba(255,107,0,0.4);
+        }
+
+        .garantia {
+            margin-top: 30px;
+            font-size: 0.9rem;
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .garantia img {
+            max-width: 50px;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .subheadline {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Quer Dominar a Arte dos Prompts?</h1>
+            <p class="subheadline">
+                Você experimentou uma pequena amostra do Método CPE no ebook gratuito. 
+                Agora, imagine ter acesso a 100 prompts estratégicos prontos para transformar sua produtividade!
+            </p>
+        </div>
+
+        <img src="../ebook/CAPA.png" alt="Capa do Ebook Método CPE" class="ebook-preview">
+
+        <div class="benefits">
+            <div class="benefit">
+                <div class="benefit-icon">🚀</div>
+                <h3>100 Prompts Estratégicos</h3>
+                <p>Prompts prontos para todas as áreas do seu negócio de infoprodutos</p>
+            </div>
+            <div class="benefit">
+                <div class="benefit-icon">📈</div>
+                <h3>Aumente sua Produtividade</h3>
+                <p>Crie conteúdo de qualidade em uma fração do tempo</p>
+            </div>
+            <div class="benefit">
+                <div class="benefit-icon">🧠</div>
+                <h3>Método CPE Completo</h3>
+                <p>Aprenda a estrutura que revoluciona a criação de prompts</p>
+            </div>
+            <div class="benefit">
+                <div class="benefit-icon">💡</div>
+                <h3>Aplicação Imediata</h3>
+                <p>Prompts prontos para Instagram, email, copywriting e muito mais</p>
+            </div>
+        </div>
+
+        <a href="https://pay.hotmart.com/SEU_LINK_DE_VENDA" class="cta-button">
+            QUERO OS 100 PROMPTS AGORA! 🔥
+        </a>
+
+        <div class="garantia">
+            <img src="garantia-7-dias.png" alt="Garantia de 7 dias">
+            <p>7 dias de garantia - Se não transformar sua produtividade, devolvemos 100% do seu dinheiro</p>
+        </div>
+    </div>
+
+    <script>
+        // Opcional: Adicione scripts de rastreamento ou pixel de conversão aqui
+        document.querySelector('.cta-button').addEventListener('click', function() {
+            // Exemplo de evento de conversão (adapte conforme sua necessidade)
+            window.dataLayer = window.dataLayer || [];
+            window.dataLayer.push({
+                'event': 'purchase_intent',
+                'product': 'Ebook Método CPE 100 Prompts'
+            });
+        });
+    </script>
+</body>
+</html>
