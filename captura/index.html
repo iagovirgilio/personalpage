@@ -290,6 +290,47 @@
             display: none;
         }
 
+        /* Loading animation */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s;
+        }
+
+        .loading-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid var(--primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
         /* Admin panel styles */
         #adminPanel {
             position: fixed;
@@ -580,6 +621,11 @@
     <!-- Toast notification -->
     <div class="toast" id="toast">Mensagem de notificação</div>
 
+    <!-- Loading overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="spinner"></div>
+    </div>
+
     <!-- Admin Panel (hidden by default) -->
     <div id="adminPanel">
         <div class="admin-buttons">
@@ -616,6 +662,60 @@
     </div>
 
     <script>
+        /*=====================================================
+         * CONFIGURAÇÃO DO GOOGLE SHEETS
+         * 
+         * IMPORTANTE: Para integrar com o Google Sheets, você precisa:
+         * 
+         * 1. Criar uma planilha do Google Sheets
+         * 2. Configurar os cabeçalhos na primeira linha:
+         *    A1: Data/Hora | B1: Nome | C1: Email | D1: Telefone | E1: Idade | F1: Gênero
+         * 3. No menu, acesse: Extensões > Apps Script
+         * 4. Cole o código abaixo:
+         * 
+         * function doPost(e) {
+         *   try {
+         *     // Obter a planilha ativa
+         *     var ss = SpreadsheetApp.getActiveSpreadsheet();
+         *     var sheet = ss.getSheetByName("Página1"); // ou o nome da sua aba
+         *     
+         *     // Processar os dados recebidos
+         *     var data = JSON.parse(e.postData.contents);
+         *     
+         *     // Formatar a data atual
+         *     var timestamp = new Date();
+         *     
+         *     // Adicionar uma nova linha com os dados
+         *     sheet.appendRow([
+         *       timestamp,
+         *       data.name,
+         *       data.email,
+         *       data.phone,
+         *       data.age,
+         *       data.gender
+         *     ]);
+         *     
+         *     // Retornar sucesso
+         *     return ContentService
+         *       .createTextOutput(JSON.stringify({"result":"success"}))
+         *       .setMimeType(ContentService.MimeType.JSON);
+         *   } 
+         *   catch(error) {
+         *     // Retornar erro
+         *     return ContentService
+         *       .createTextOutput(JSON.stringify({"result":"error", "error": error}))
+         *       .setMimeType(ContentService.MimeType.JSON);
+         *   }
+         * }
+         * 
+         * 5. Salve o script e depois vá em Implantar > Nova implantação
+         * 6. Selecione "Aplicação web", execute como "Você" e acesso "Qualquer pessoa"
+         * 7. Copie a URL gerada e substitua abaixo na variável GOOGLE_SCRIPT_URL
+         *====================================================*/
+
+        // Substitua esta URL pela URL do seu Google Apps Script publicado
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzwrhMa3YSQaBz6DO1hlgE4KUIuSqa-V6ZllZQIbjmRkPQWESmbHN1u3aXCCeeiT0ZT/exec';
+
         // Variáveis para armazenar os dados do formulário
         let formData = {
             name: '',
@@ -634,10 +734,7 @@
             }
         }
 
-        // Inicializa o armazenamento ao carregar a página
-        initializeLeadsStorage();
-
-        // Função para salvar um novo lead e gerar JSON automático
+        // Função para salvar um novo lead no armazenamento local
         function saveLead(leadData) {
             // Recupera os leads existentes
             const leads = JSON.parse(localStorage.getItem('capturedLeads')) || [];
@@ -648,53 +745,124 @@
             // Adiciona o novo lead
             leads.push(leadData);
 
+            console.log("=======================")
+            console.log(leadData);
+            console.log("=======================")
+
             // Salva de volta no localStorage
             localStorage.setItem('capturedLeads', JSON.stringify(leads));
-
-            // Cria automaticamente um arquivo JSON com todos os leads
-            autoExportLeads();
 
             // Retorna o lead recém-adicionado
             return leadData;
         }
 
-        // Exportar dados como arquivo JSON automaticamente
-        function autoExportLeads() {
+        // Enviar dados para o Google Sheets
+        async function enviarParaGoogleSheets(leadData) {
+            try {
+                showLoading(true);
+
+                // Cria uma cópia exata dos dados no formato esperado pelo servidor
+                const dadosFormatados = {
+                    name: leadData.name,
+                    email: leadData.email,
+                    phone: leadData.phone,
+                    age: leadData.age,
+                    gender: leadData.gender
+                };
+
+                // Log dos dados exatos que estão sendo enviados
+                console.log("Dados enviados para Google Sheets:", dadosFormatados);
+
+                const response = await fetch(GOOGLE_SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(dadosFormatados)
+                });
+
+                console.log('Requisição enviada para Google Sheets');
+                return true;
+            } catch (error) {
+                console.error('Erro ao enviar para Google Sheets:', error);
+                return false;
+            } finally {
+                showLoading(false);
+            }
+        }
+
+        // Exportar dados como arquivo JSON
+        function exportLeads(customFilename = null) {
             const leads = JSON.parse(localStorage.getItem('capturedLeads')) || [];
+
+            if (leads.length === 0) {
+                showToast('Não há leads para exportar');
+                return false;
+            }
+
             const dataStr = JSON.stringify(leads, null, 2); // formatado com indentação
             const dataUri = 'data:application/json;charset=utf-8,' + encodeURIComponent(dataStr);
 
-            const exportFileDefaultName = 'leads_metodo_cpe.json';
+            const exportFileDefaultName = customFilename ||
+                'leads_metodo_cpe_' + new Date().toISOString().slice(0, 10) + '.json';
 
             const linkElement = document.createElement('a');
             linkElement.setAttribute('href', dataUri);
             linkElement.setAttribute('download', exportFileDefaultName);
-            document.body.appendChild(linkElement); // Necessário para Firefox
+            document.body.appendChild(linkElement);
             linkElement.click();
             document.body.removeChild(linkElement);
+
+            return true;
         }
 
         // Limpar todos os leads
         function clearAllLeads() {
-            if (confirm('Tem certeza que deseja apagar todos os leads? Esta ação não pode ser desfeita.')) {
+            const leads = JSON.parse(localStorage.getItem('capturedLeads')) || [];
+
+            if (leads.length === 0) {
+                showToast('Não há leads para remover');
+                return false;
+            }
+
+            if (confirm(`Tem certeza que deseja apagar todos os ${leads.length} leads? Esta ação não pode ser desfeita.`)) {
                 localStorage.setItem('capturedLeads', JSON.stringify([]));
                 showToast('Todos os leads foram removidos');
+                return true;
             }
+            return false;
         }
 
         // Copiar leads para a área de transferência
         function copyLeadsToClipboard() {
             const leads = JSON.parse(localStorage.getItem('capturedLeads')) || [];
+
+            if (leads.length === 0) {
+                showToast('Não há leads para copiar');
+                return false;
+            }
+
             const dataStr = JSON.stringify(leads, null, 2);
 
             navigator.clipboard.writeText(dataStr).then(() => {
-                showToast('Dados copiados para a área de transferência');
+                showToast(`${leads.length} leads copiados para a área de transferência`);
             }).catch(err => {
                 showToast('Erro ao copiar: ' + err);
             });
         }
 
         // ===== INTERFACE DO USUÁRIO =====
+
+        // Função para mostrar/esconder o indicador de carregamento
+        function showLoading(show) {
+            const loadingOverlay = document.getElementById('loadingOverlay');
+            if (show) {
+                loadingOverlay.classList.add('active');
+            } else {
+                loadingOverlay.classList.remove('active');
+            }
+        }
 
         // Função para mostrar um passo específico
         function showStep(stepNumber) {
@@ -764,178 +932,225 @@
 
                 row.innerHTML = `
                     <td>${formattedDate}</td>
-                    <td>${lead.name}</td>
-                    <td>${lead.email}</td>
-                    <td>${lead.phone}</td>
-                    <td>${lead.age}</td>
-                    <td>${lead.gender}</td>
+                    <td>${lead.name || '-'}</td>
+                    <td>${lead.email || '-'}</td>
+                    <td>${lead.phone || '-'}</td>
+                    <td>${lead.age || '-'}</td>
+                    <td>${lead.gender || '-'}</td>
                 `;
 
                 tableBody.appendChild(row);
             });
         }
 
-        // ===== VALIDAÇÃO DO FORMULÁRIO =====
+        // ===== PROCESSAMENTO DO FORMULÁRIO =====
 
-        // Validar nome
-        document.getElementById('nameNext').addEventListener('click', function () {
-            const name = document.getElementById('name').value.trim();
-            if (name.length < 3 || !name.includes(' ')) {
-                document.getElementById('nameError').style.display = 'block';
-                document.getElementById('name').focus();
-            } else {
-                document.getElementById('nameError').style.display = 'none';
-                formData.name = name;
-                showStep(2);
-            }
-        });
+        // Função para validar nome completo
+        function validateName(name) {
+            return name.trim().length >= 3 && name.includes(' ');
+        }
 
-        // Validar email
-        document.getElementById('emailNext').addEventListener('click', function () {
-            const email = document.getElementById('email').value.trim();
+        // Função para validar email
+        function validateEmail(email) {
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email.trim());
+        }
 
-            if (!emailRegex.test(email)) {
-                document.getElementById('emailError').style.display = 'block';
-                document.getElementById('email').focus();
-            } else {
-                document.getElementById('emailError').style.display = 'none';
-                formData.email = email;
-                showStep(3);
-            }
-        });
-
-        // Validar telefone
-        document.getElementById('phoneNext').addEventListener('click', function () {
-            const phone = document.getElementById('phone').value.trim();
+        // Função para validar telefone brasileiro
+        function validatePhone(phone) {
             const phoneRegex = /^\(?[1-9]{2}\)? ?(?:[2-8]|9[1-9])[0-9]{3}\-?[0-9]{4}$/;
+            return phoneRegex.test(phone.trim());
+        }
 
-            if (!phoneRegex.test(phone)) {
-                document.getElementById('phoneError').style.display = 'block';
-                document.getElementById('phone').focus();
-            } else {
-                document.getElementById('phoneError').style.display = 'none';
-                formData.phone = phone;
-                showStep(4);
-            }
-        });
-
-        // Validar idade
-        document.getElementById('ageNext').addEventListener('click', function () {
-            const age = document.getElementById('age').value;
-
-            if (age === '' || age === null) {
-                document.getElementById('ageError').style.display = 'block';
-            } else {
-                document.getElementById('ageError').style.display = 'none';
-                formData.age = age;
-                showStep(5);
-            }
-        });
-
-        // Validar gênero e submeter formulário
-        document.getElementById('submitForm').addEventListener('click', function () {
+        // Função para processar a submissão do formulário
+        async function handleFormSubmission() {
             const gender = document.getElementById('gender').value;
 
             if (gender === '' || gender === null) {
                 document.getElementById('genderError').style.display = 'block';
-            } else {
-                document.getElementById('genderError').style.display = 'none';
-                formData.gender = gender;
+                return false;
+            }
 
-                // Salvar os dados
+            document.getElementById('genderError').style.display = 'none';
+            formData.gender = gender;
+
+            // Desabilitar o botão para evitar múltiplos envios
+            const submitButton = document.getElementById('submitForm');
+            submitButton.disabled = true;
+            submitButton.textContent = 'Processando...';
+
+            try {
+                // 1. Salvar localmente (para backup)
                 saveLead(formData);
 
-                // Mostrar tela de sucesso
+                // 2. Enviar para Google Sheets
+                const sheetsSuccess = await enviarParaGoogleSheets(formData);
+
+                // 3. Notificar usuário e mostrar tela de sucesso
+                if (sheetsSuccess) {
+                    showToast('Seus dados foram enviados com sucesso!');
+                } else {
+                    showToast('Dados salvos localmente. Enviando em segundo plano...');
+
+                    // Tentar novamente em segundo plano
+                    setTimeout(() => {
+                        enviarParaGoogleSheets(formData)
+                            .then(success => {
+                                if (success) {
+                                    console.log('Envio em segundo plano bem-sucedido');
+                                }
+                            });
+                    }, 3000);
+                }
+
+                // 4. Avançar para a tela de sucesso
                 showStep('success');
-
-                // Esconder o progresso
                 document.querySelector('.progress-container').style.display = 'none';
+
+                return true;
+            } catch (error) {
+                console.error('Erro no processo de envio:', error);
+                showToast('Ocorreu um erro. Por favor, tente novamente.');
+                return false;
+            } finally {
+                // Reabilitar o botão
+                submitButton.disabled = false;
+                submitButton.textContent = 'Baixar Ebook';
             }
-        });
+        }
 
-        // ===== BOTÕES DE NAVEGAÇÃO =====
+        // ===== EVENT LISTENERS =====
 
-        // Botões de voltar
-        document.getElementById('emailBack').addEventListener('click', () => showStep(1));
-        document.getElementById('phoneBack').addEventListener('click', () => showStep(2));
-        document.getElementById('ageBack').addEventListener('click', () => showStep(3));
-        document.getElementById('genderBack').addEventListener('click', () => showStep(4));
+        // Quando o DOM estiver carregado
+        document.addEventListener('DOMContentLoaded', function () {
+            // Inicialização
+            initializeLeadsStorage();
 
-        // ===== ATALHOS DE TECLADO =====
+            // Validar nome
+            document.getElementById('nameNext').addEventListener('click', function () {
+                const name = document.getElementById('name').value;
+                if (!validateName(name)) {
+                    document.getElementById('nameError').style.display = 'block';
+                    document.getElementById('name').focus();
+                } else {
+                    document.getElementById('nameError').style.display = 'none';
+                    formData.name = name.trim();
+                    showStep(2);
+                }
+            });
 
-        // Permitir usar Enter para avançar nos campos
-        document.getElementById('name').addEventListener('keypress', function (e) {
-            if (e.key === 'Enter') document.getElementById('nameNext').click();
-        });
+            // Validar email
+            document.getElementById('emailNext').addEventListener('click', function () {
+                const email = document.getElementById('email').value;
+                if (!validateEmail(email)) {
+                    document.getElementById('emailError').style.display = 'block';
+                    document.getElementById('email').focus();
+                } else {
+                    document.getElementById('emailError').style.display = 'none';
+                    formData.email = email.trim();
+                    showStep(3);
+                }
+            });
 
-        document.getElementById('email').addEventListener('keypress', function (e) {
-            if (e.key === 'Enter') document.getElementById('emailNext').click();
-        });
+            // Validar telefone
+            document.getElementById('phoneNext').addEventListener('click', function () {
+                const phone = document.getElementById('phone').value;
+                if (!validatePhone(phone)) {
+                    document.getElementById('phoneError').style.display = 'block';
+                    document.getElementById('phone').focus();
+                } else {
+                    document.getElementById('phoneError').style.display = 'none';
+                    formData.phone = phone.trim();
+                    showStep(4);
+                }
+            });
 
-        document.getElementById('phone').addEventListener('keypress', function (e) {
-            if (e.key === 'Enter') document.getElementById('phoneNext').click();
-        });
+            // Validar idade
+            document.getElementById('ageNext').addEventListener('click', function () {
+                const age = document.getElementById('age').value;
+                if (age === '' || age === null) {
+                    document.getElementById('ageError').style.display = 'block';
+                } else {
+                    document.getElementById('ageError').style.display = 'none';
+                    formData.age = age;
+                    showStep(5);
+                }
+            });
 
-        // ===== ADMIN PANEL =====
+            // Botões de voltar
+            document.getElementById('emailBack').addEventListener('click', () => showStep(1));
+            document.getElementById('phoneBack').addEventListener('click', () => showStep(2));
+            document.getElementById('ageBack').addEventListener('click', () => showStep(3));
+            document.getElementById('genderBack').addEventListener('click', () => showStep(4));
 
-        // Código para acesso administrativo (ctrl+shift+L)
-        document.addEventListener('keydown', function (e) {
-            if (e.ctrlKey && e.shiftKey && e.key === 'L') {
-                document.getElementById('adminPanel').style.display =
-                    document.getElementById('adminPanel').style.display === 'none' ? 'block' : 'none';
-            }
-        });
+            // Processar formulário final
+            document.getElementById('submitForm').addEventListener('click', handleFormSubmission);
 
-        // Visualização dos leads
-        document.getElementById('viewLeadsButton').addEventListener('click', function () {
-            displayLeadsData();
-            document.getElementById('leadsData').style.display = 'block';
-        });
+            // Enter para campos
+            document.getElementById('name').addEventListener('keypress', function (e) {
+                if (e.key === 'Enter') document.getElementById('nameNext').click();
+            });
 
-        // Fechar modal de leads
-        document.querySelector('#leadsData .close-btn').addEventListener('click', function () {
-            document.getElementById('leadsData').style.display = 'none';
-        });
+            document.getElementById('email').addEventListener('keypress', function (e) {
+                if (e.key === 'Enter') document.getElementById('emailNext').click();
+            });
 
-        // Exportar JSON manualmente
-        document.getElementById('exportButton').addEventListener('click', function () {
-            const leads = JSON.parse(localStorage.getItem('capturedLeads')) || [];
-            const dataStr = JSON.stringify(leads, null, 2); // formatado com indentação
-            const dataUri = 'data:application/json;charset=utf-8,' + encodeURIComponent(dataStr);
+            document.getElementById('phone').addEventListener('keypress', function (e) {
+                if (e.key === 'Enter') document.getElementById('phoneNext').click();
+            });
 
-            const exportFileDefaultName = 'leads_metodo_cpe_' + new Date().toISOString().slice(0, 10) + '.json';
+            // Painel administrativo (ctrl+shift+L)
+            document.addEventListener('keydown', function (e) {
+                if (e.ctrlKey && e.shiftKey && e.key === 'L') {
+                    document.getElementById('adminPanel').style.display =
+                        document.getElementById('adminPanel').style.display === 'none' ? 'block' : 'none';
+                }
+            });
 
-            const linkElement = document.createElement('a');
-            linkElement.setAttribute('href', dataUri);
-            linkElement.setAttribute('download', exportFileDefaultName);
-            document.body.appendChild(linkElement);
-            linkElement.click();
-            document.body.removeChild(linkElement);
+            // Visualização dos leads
+            document.getElementById('viewLeadsButton').addEventListener('click', function () {
+                displayLeadsData();
+                document.getElementById('leadsData').style.display = 'block';
+            });
 
-            showToast('JSON exportado com sucesso');
-        });
+            // Fechar modal de leads
+            document.querySelector('#leadsData .close-btn').addEventListener('click', function () {
+                document.getElementById('leadsData').style.display = 'none';
+            });
 
-        // Botão de exportação automática
-        document.getElementById('autoExportButton').addEventListener('click', function () {
-            autoExportLeads();
-            showToast('Exportação automática realizada');
-        });
+            // Exportar JSON manualmente
+            document.getElementById('exportButton').addEventListener('click', function () {
+                if (exportLeads()) {
+                    showToast('JSON exportado com sucesso');
+                }
+            });
 
-        // Botão de limpar leads
-        document.getElementById('clearLeadsButton').addEventListener('click', function () {
-            clearAllLeads();
-            displayLeadsData(); // Atualizar tabela
-        });
+            // Botão de exportação automática
+            document.getElementById('autoExportButton').addEventListener('click', function () {
+                if (exportLeads('leads_metodo_cpe_auto.json')) {
+                    showToast('Exportação automática realizada');
+                }
+            });
 
-        // Botão de copiar para clipboard
-        document.getElementById('copyButton').addEventListener('click', function () {
-            copyLeadsToClipboard();
-        });
+            // Botão de limpar leads
+            document.getElementById('clearLeadsButton').addEventListener('click', function () {
+                if (clearAllLeads()) {
+                    displayLeadsData(); // Atualizar tabela
+                }
+            });
 
-        // Manipulação de download do ebook
-        document.getElementById('downloadEbook').addEventListener('click', function (e) {
-            // Aqui você pode adicionar lógicas adicionais, como tracking de download
-            showToast('Ebook baixado com sucesso!');
+            // Botão de copiar para clipboard
+            document.getElementById('copyButton').addEventListener('click', function () {
+                copyLeadsToClipboard();
+            });
+
+            // Manipulação de download do ebook
+            document.getElementById('downloadEbook').addEventListener('click', function (e) {
+                // Aqui você pode adicionar lógicas adicionais, como tracking de download
+                showToast('Ebook baixado com sucesso!');
+            });
         });
     </script>
+</body>
+
+</html>
