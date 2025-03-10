@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baixe seu Ebook Gratuito - Método CPE</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #3d7ad6;
+            --primary-dark: #2b5ca5;
+            --secondary: #ff6b00;
+            --secondary-dark: #e65100;
+            --white: #ffffff;
+            --light-gray: #f5f7fa;
+            --text: #333333;
+            --text-light: #777777;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            --transition: all 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: var(--text);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 500px;
+            position: relative;
+        }
+
+        .ebook-preview {
+            position: absolute;
+            top: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 220px;
+            height: 280px;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: var(--shadow);
+            background-image: url('ebook-cover.jpg');
+            background-size: cover;
+            background-position: center;
+            z-index: 2;
+        }
+
+        .card {
+            background-color: var(--white);
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            padding: 40px;
+            padding-top: 200px;
+            margin-top: 80px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 22px;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 30px;
+            color: var(--text);
+        }
+
+        .steps-container {
+            position: relative;
+            height: 280px;
+            overflow: hidden;
+        }
+
+        .step {
+            position: absolute;
+            width: 100%;
+            transition: var(--transition);
+            opacity: 0;
+            transform: translateX(50px);
+            height: 0;
+            overflow: hidden;
+        }
+
+        .step.active {
+            opacity: 1;
+            transform: translateX(0);
+            height: auto;
+            overflow: visible;
+        }
+
+        .step-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: var(--primary-dark);
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid var(--light-gray);
+            border-radius: 10px;
+            font-size: 16px;
+            font-family: 'Poppins', sans-serif;
+            color: var(--text);
+            transition: border-color 0.3s;
+            margin-bottom: 20px;
+            background-color: var(--light-gray);
+        }
+
+        input:focus,
+        select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(61, 122, 214, 0.1);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            background-color: var(--secondary);
+            color: var(--white);
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .btn:hover {
+            background-color: var(--secondary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 7px 15px rgba(255, 107, 0, 0.2);
+        }
+
+        .btn-back {
+            background-color: transparent;
+            color: var(--text-light);
+            margin-right: 10px;
+        }
+
+        .btn-back:hover {
+            background-color: var(--light-gray);
+            box-shadow: none;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+
+        .buttons.right-align {
+            justify-content: flex-end;
+        }
+
+        .progress-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        .progress-step {
+            width: 10px;
+            height: 10px;
+            background-color: var(--light-gray);
+            border-radius: 50%;
+            margin: 0 5px;
+            transition: var(--transition);
+        }
+
+        .progress-step.active {
+            background-color: var(--primary);
+            transform: scale(1.3);
+        }
+
+        .error-message {
+            color: #e74c3c;
+            font-size: 14px;
+            margin-top: -15px;
+            margin-bottom: 15px;
+            display: none;
+        }
+
+        .success-container {
+            text-align: center;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            background-color: #2ecc71;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+            position: relative;
+        }
+
+        .success-icon::before,
+        .success-icon::after {
+            content: '';
+            position: absolute;
+            background-color: white;
+        }
+
+        .success-icon::before {
+            width: 25px;
+            height: 5px;
+            transform: rotate(45deg) translate(-5px, 10px);
+            left: 20px;
+        }
+
+        .success-icon::after {
+            width: 40px;
+            height: 5px;
+            transform: rotate(-45deg);
+            right: 15px;
+        }
+
+        .success-message {
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--primary-dark);
+        }
+
+        .success-subtitle {
+            color: var(--text-light);
+            margin-bottom: 30px;
+        }
+
+        .download-btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            font-family: 'Montserrat', sans-serif;
+            letter-spacing: 0.5px;
+        }
+
+        .download-btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 7px 15px rgba(43, 92, 165, 0.2);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        /* Admin panel styles */
+        #adminPanel {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            z-index: 1000;
+            display: none;
+        }
+
+        .admin-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        #adminPanel button {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        #adminPanel button.danger {
+            background-color: #e74c3c;
+        }
+
+        #leadsData {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
+            max-width: 900px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            z-index: 1001;
+            display: none;
+        }
+
+        #leadsData h2 {
+            margin-bottom: 20px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        #leadsData table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        #leadsData th,
+        #leadsData td {
+            border: 1px solid #eee;
+            padding: 12px;
+            text-align: left;
+        }
+
+        #leadsData th {
+            background-color: var(--light-gray);
+            font-weight: 600;
+        }
+
+        #leadsData .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--text-light);
+        }
+
+        .export-buttons {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .export-buttons button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            color: white;
+        }
+
+        #exportButton {
+            background-color: #2ecc71;
+        }
+
+        #copyButton {
+            background-color: var(--primary);
+        }
+
+        .leads-count {
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: var(--primary-dark);
+        }
+
+        /* Toast notification */
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #2ecc71;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 5px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            z-index: 2000;
+        }
+
+        .toast.show {
+            opacity: 1;
+        }
+
+        /* Animation for step transitions */
+        @keyframes slideInRight {
+            from {
+                transform: translateX(50px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideOutLeft {
+            from {
+                transform: translateX(0);
+                opacity: 1;
+            }
+
+            to {
+                transform: translateX(-50px);
+                opacity: 0;
+            }
+        }
+
+        .slide-in {
+            animation: slideInRight 0.4s forwards;
+        }
+
+        .slide-out {
+            animation: slideOutLeft 0.4s forwards;
+        }
+
+        @media (max-width: 500px) {
+            .card {
+                padding: 25px;
+                padding-top: 180px;
+            }
+
+            .ebook-preview {
+                width: 180px;
+                height: 240px;
+            }
+
+            h1 {
+                font-size: 20px;
+            }
+
+            .step-title {
+                font-size: 16px;
+            }
+
+            .btn {
+                padding: 12px 20px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="ebook-preview"></div>
+        <div class="card">
+            <h1>Baixe Grátis: Introdução ao Método CPE</h1>
+
+            <div class="progress-container">
+                <div class="progress-step active" data-step="1"></div>
+                <div class="progress-step" data-step="2"></div>
+                <div class="progress-step" data-step="3"></div>
+                <div class="progress-step" data-step="4"></div>
+                <div class="progress-step" data-step="5"></div>
+            </div>
+
+            <div class="steps-container">
+                <!-- Step 1: Name -->
+                <div class="step active" id="step1">
+                    <h2 class="step-title">Qual é o seu nome?</h2>
+                    <input type="text" id="name" placeholder="Digite seu nome completo" autofocus>
+                    <div class="error-message" id="nameError">Por favor, digite seu nome completo</div>
+                    <div class="buttons right-align">
+                        <button class="btn" id="nameNext">Continuar</button>
+                    </div>
+                </div>
+
+                <!-- Step 2: Email -->
+                <div class="step" id="step2">
+                    <h2 class="step-title">Qual é o seu melhor email?</h2>
+                    <input type="email" id="email" placeholder="Digite seu email">
+                    <div class="error-message" id="emailError">Por favor, digite um email válido</div>
+                    <div class="buttons">
+                        <button class="btn btn-back" id="emailBack">Voltar</button>
+                        <button class="btn" id="emailNext">Continuar</button>
+                    </div>
+                </div>
+
+                <!-- Step 3: Phone -->
+                <div class="step" id="step3">
+                    <h2 class="step-title">Qual é o seu WhatsApp?</h2>
+                    <input type="tel" id="phone" placeholder="Digite seu telefone com DDD">
+                    <div class="error-message" id="phoneError">Por favor, digite um telefone válido</div>
+                    <div class="buttons">
+                        <button class="btn btn-back" id="phoneBack">Voltar</button>
+                        <button class="btn" id="phoneNext">Continuar</button>
+                    </div>
+                </div>
+
+                <!-- Step 4: Age -->
+                <div class="step" id="step4">
+                    <h2 class="step-title">Qual é a sua faixa etária?</h2>
+                    <select id="age">
+                        <option value="" selected disabled>Selecione sua idade</option>
+                        <option value="16-25">16-25 anos</option>
+                        <option value="26-35">26-35 anos</option>
+                        <option value="36-45">36-45 anos</option>
+                        <option value="46-55">46-55 anos</option>
+                        <option value="56+">56 anos ou mais</option>
+                    </select>
+                    <div class="error-message" id="ageError">Por favor, selecione sua faixa etária</div>
+                    <div class="buttons">
+                        <button class="btn btn-back" id="ageBack">Voltar</button>
+                        <button class="btn" id="ageNext">Continuar</button>
+                    </div>
+                </div>
+
+                <!-- Step 5: Gender -->
+                <div class="step" id="step5">
+                    <h2 class="step-title">Com qual gênero você se identifica?</h2>
+                    <select id="gender">
+                        <option value="" selected disabled>Selecione seu gênero</option>
+                        <option value="masculino">Masculino</option>
+                        <option value="feminino">Feminino</option>
+                        <option value="outro">Outro</option>
+                        <option value="prefiro-nao-informar">Prefiro não informar</option>
+                    </select>
+                    <div class="error-message" id="genderError">Por favor, selecione uma opção</div>
+                    <div class="buttons">
+                        <button class="btn btn-back" id="genderBack">Voltar</button>
+                        <button class="btn" id="submitForm">Baixar Ebook</button>
+                    </div>
+                </div>
+
+                <!-- Success step -->
+                <div class="step" id="success">
+                    <div class="success-container">
+                        <div class="success-icon"></div>
+                        <h2 class="success-message">Seu ebook está pronto!</h2>
+                        <p class="success-subtitle">Clique no botão abaixo para fazer o download</p>
+                        <a href="ebook_gratuito.pdf" download class="download-btn" id="downloadEbook">BAIXAR EBOOK
+                            AGORA</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast notification -->
+    <div class="toast" id="toast">Mensagem de notificação</div>
+
+    <!-- Admin Panel (hidden by default) -->
+    <div id="adminPanel">
+        <div class="admin-buttons">
+            <button id="viewLeadsButton">Ver Leads</button>
+            <button id="autoExportButton">Exportar JSON Agora</button>
+            <button id="clearLeadsButton" class="danger">Limpar Dados</button>
+        </div>
+    </div>
+
+    <!-- Modal para visualização dos leads -->
+    <div id="leadsData">
+        <button class="close-btn">&times;</button>
+        <h2>Dados dos Leads Capturados</h2>
+        <div class="leads-count" id="leadsCount">Total: 0 leads</div>
+        <div class="export-buttons">
+            <button id="exportButton">Exportar JSON</button>
+            <button id="copyButton">Copiar para Clipboard</button>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Data</th>
+                    <th>Nome</th>
+                    <th>Email</th>
+                    <th>Telefone</th>
+                    <th>Idade</th>
+                    <th>Gênero</th>
+                </tr>
+            </thead>
+            <tbody id="leadsTableBody">
+                <!-- Dados serão inseridos aqui via JavaScript -->
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        // Variáveis para armazenar os dados do formulário
+        let formData = {
+            name: '',
+            email: '',
+            phone: '',
+            age: '',
+            gender: ''
+        };
+
+        // ===== GERENCIAMENTO DE DADOS =====
+
+        // Inicializar armazenamento de leads se não existir
+        function initializeLeadsStorage() {
+            if (!localStorage.getItem('capturedLeads')) {
+                localStorage.setItem('capturedLeads', JSON.stringify([]));
+            }
+        }
+
+        // Inicializa o armazenamento ao carregar a página
+        initializeLeadsStorage();
+
+        // Função para salvar um novo lead e gerar JSON automático
+        function saveLead(leadData) {
+            // Recupera os leads existentes
+            const leads = JSON.parse(localStorage.getItem('capturedLeads')) || [];
+
+            // Adiciona a data e hora atual
+            leadData.timestamp = new Date().toISOString();
+
+            // Adiciona o novo lead
+            leads.push(leadData);
+
+            // Salva de volta no localStorage
+            localStorage.setItem('capturedLeads', JSON.stringify(leads));
+
+            // Cria automaticamente um arquivo JSON com todos os leads
+            autoExportLeads();
+
+            // Retorna o lead recém-adicionado
+            return leadData;
+        }
+
+        // Exportar dados como arquivo JSON automaticamente
+        function autoExportLeads() {
+            const leads = JSON.parse(localStorage.getItem('capturedLeads')) || [];
+            const dataStr = JSON.stringify(leads, null, 2); // formatado com indentação
+            const dataUri = 'data:application/json;charset=utf-8,' + encodeURIComponent(dataStr);
+
+            const exportFileDefaultName = 'leads_metodo_cpe.json';
+
+            const linkElement = document.createElement('a');
+            linkElement.setAttribute('href', dataUri);
+            linkElement.setAttribute('download', exportFileDefaultName);
+            document.body.appendChild(linkElement); // Necessário para Firefox
+            linkElement.click();
+            document.body.removeChild(linkElement);
+        }
+
+        // Limpar todos os leads
+        function clearAllLeads() {
+            if (confirm('Tem certeza que deseja apagar todos os leads? Esta ação não pode ser desfeita.')) {
+                localStorage.setItem('capturedLeads', JSON.stringify([]));
+                showToast('Todos os leads foram removidos');
+            }
+        }
+
+        // Copiar leads para a área de transferência
+        function copyLeadsToClipboard() {
+            const leads = JSON.parse(localStorage.getItem('capturedLeads')) || [];
+            const dataStr = JSON.stringify(leads, null, 2);
+
+            navigator.clipboard.writeText(dataStr).then(() => {
+                showToast('Dados copiados para a área de transferência');
+            }).catch(err => {
+                showToast('Erro ao copiar: ' + err);
+            });
+        }
+
+        // ===== INTERFACE DO USUÁRIO =====
+
+        // Função para mostrar um passo específico
+        function showStep(stepNumber) {
+            // Atualizar o indicador de progresso
+            document.querySelectorAll('.progress-step').forEach(step => {
+                step.classList.remove('active');
+            });
+
+            // Se não for o passo de sucesso, atualizar o indicador de progresso
+            if (stepNumber <= 5) {
+                document.querySelector(`.progress-step[data-step="${stepNumber}"]`).classList.add('active');
+            }
+
+            // Esconder todos os passos
+            document.querySelectorAll('.step').forEach(step => {
+                step.classList.remove('active');
+                step.classList.remove('slide-in');
+                step.classList.remove('slide-out');
+            });
+
+            // Mostrar o passo atual com animação
+            let currentStep;
+            if (stepNumber === 'success') {
+                currentStep = document.getElementById('success');
+            } else {
+                currentStep = document.getElementById(`step${stepNumber}`);
+            }
+
+            currentStep.classList.add('active');
+            currentStep.classList.add('slide-in');
+
+            // Foco automático no input do passo (se existir)
+            const input = currentStep.querySelector('input, select');
+            if (input) {
+                setTimeout(() => {
+                    input.focus();
+                }, 400);
+            }
+        }
+
+        // Mostrar notificação toast
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.classList.add('show');
+
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+
+        // Função para exibir os dados dos leads
+        function displayLeadsData() {
+            const leads = JSON.parse(localStorage.getItem('capturedLeads')) || [];
+            const tableBody = document.getElementById('leadsTableBody');
+            tableBody.innerHTML = '';
+
+            // Atualizar o contador de leads
+            document.getElementById('leadsCount').textContent = `Total: ${leads.length} leads`;
+
+            leads.forEach(lead => {
+                const row = document.createElement('tr');
+
+                // Formata a data para exibição
+                const date = new Date(lead.timestamp);
+                const formattedDate = `${date.toLocaleDateString()} ${date.toLocaleTimeString()}`;
+
+                row.innerHTML = `
+                    <td>${formattedDate}</td>
+                    <td>${lead.name}</td>
+                    <td>${lead.email}</td>
+                    <td>${lead.phone}</td>
+                    <td>${lead.age}</td>
+                    <td>${lead.gender}</td>
+                `;
+
+                tableBody.appendChild(row);
+            });
+        }
+
+        // ===== VALIDAÇÃO DO FORMULÁRIO =====
+
+        // Validar nome
+        document.getElementById('nameNext').addEventListener('click', function () {
+            const name = document.getElementById('name').value.trim();
+            if (name.length < 3 || !name.includes(' ')) {
+                document.getElementById('nameError').style.display = 'block';
+                document.getElementById('name').focus();
+            } else {
+                document.getElementById('nameError').style.display = 'none';
+                formData.name = name;
+                showStep(2);
+            }
+        });
+
+        // Validar email
+        document.getElementById('emailNext').addEventListener('click', function () {
+            const email = document.getElementById('email').value.trim();
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            if (!emailRegex.test(email)) {
+                document.getElementById('emailError').style.display = 'block';
+                document.getElementById('email').focus();
+            } else {
+                document.getElementById('emailError').style.display = 'none';
+                formData.email = email;
+                showStep(3);
+            }
+        });
+
+        // Validar telefone
+        document.getElementById('phoneNext').addEventListener('click', function () {
+            const phone = document.getElementById('phone').value.trim();
+            const phoneRegex = /^\(?[1-9]{2}\)? ?(?:[2-8]|9[1-9])[0-9]{3}\-?[0-9]{4}$/;
+
+            if (!phoneRegex.test(phone)) {
+                document.getElementById('phoneError').style.display = 'block';
+                document.getElementById('phone').focus();
+            } else {
+                document.getElementById('phoneError').style.display = 'none';
+                formData.phone = phone;
+                showStep(4);
+            }
+        });
+
+        // Validar idade
+        document.getElementById('ageNext').addEventListener('click', function () {
+            const age = document.getElementById('age').value;
+
+            if (age === '' || age === null) {
+                document.getElementById('ageError').style.display = 'block';
+            } else {
+                document.getElementById('ageError').style.display = 'none';
+                formData.age = age;
+                showStep(5);
+            }
+        });
+
+        // Validar gênero e submeter formulário
+        document.getElementById('submitForm').addEventListener('click', function () {
+            const gender = document.getElementById('gender').value;
+
+            if (gender === '' || gender === null) {
+                document.getElementById('genderError').style.display = 'block';
+            } else {
+                document.getElementById('genderError').style.display = 'none';
+                formData.gender = gender;
+
+                // Salvar os dados
+                saveLead(formData);
+
+                // Mostrar tela de sucesso
+                showStep('success');
+
+                // Esconder o progresso
+                document.querySelector('.progress-container').style.display = 'none';
+            }
+        });
+
+        // ===== BOTÕES DE NAVEGAÇÃO =====
+
+        // Botões de voltar
+        document.getElementById('emailBack').addEventListener('click', () => showStep(1));
+        document.getElementById('phoneBack').addEventListener('click', () => showStep(2));
+        document.getElementById('ageBack').addEventListener('click', () => showStep(3));
+        document.getElementById('genderBack').addEventListener('click', () => showStep(4));
+
+        // ===== ATALHOS DE TECLADO =====
+
+        // Permitir usar Enter para avançar nos campos
+        document.getElementById('name').addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') document.getElementById('nameNext').click();
+        });
+
+        document.getElementById('email').addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') document.getElementById('emailNext').click();
+        });
+
+        document.getElementById('phone').addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') document.getElementById('phoneNext').click();
+        });
+
+        // ===== ADMIN PANEL =====
+
+        // Código para acesso administrativo (ctrl+shift+L)
+        document.addEventListener('keydown', function (e) {
+            if (e.ctrlKey && e.shiftKey && e.key === 'L') {
+                document.getElementById('adminPanel').style.display =
+                    document.getElementById('adminPanel').style.display === 'none' ? 'block' : 'none';
+            }
+        });
+
+        // Visualização dos leads
+        document.getElementById('viewLeadsButton').addEventListener('click', function () {
+            displayLeadsData();
+            document.getElementById('leadsData').style.display = 'block';
+        });
+
+        // Fechar modal de leads
+        document.querySelector('#leadsData .close-btn').addEventListener('click', function () {
+            document.getElementById('leadsData').style.display = 'none';
+        });
+
+        // Exportar JSON manualmente
+        document.getElementById('exportButton').addEventListener('click', function () {
+            const leads = JSON.parse(localStorage.getItem('capturedLeads')) || [];
+            const dataStr = JSON.stringify(leads, null, 2); // formatado com indentação
+            const dataUri = 'data:application/json;charset=utf-8,' + encodeURIComponent(dataStr);
+
+            const exportFileDefaultName = 'leads_metodo_cpe_' + new Date().toISOString().slice(0, 10) + '.json';
+
+            const linkElement = document.createElement('a');
+            linkElement.setAttribute('href', dataUri);
+            linkElement.setAttribute('download', exportFileDefaultName);
+            document.body.appendChild(linkElement);
+            linkElement.click();
+            document.body.removeChild(linkElement);
+
+            showToast('JSON exportado com sucesso');
+        });
+
+        // Botão de exportação automática
+        document.getElementById('autoExportButton').addEventListener('click', function () {
+            autoExportLeads();
+            showToast('Exportação automática realizada');
+        });
+
+        // Botão de limpar leads
+        document.getElementById('clearLeadsButton').addEventListener('click', function () {
+            clearAllLeads();
+            displayLeadsData(); // Atualizar tabela
+        });
+
+        // Botão de copiar para clipboard
+        document.getElementById('copyButton').addEventListener('click', function () {
+            copyLeadsToClipboard();
+        });
+
+        // Manipulação de download do ebook
+        document.getElementById('downloadEbook').addEventListener('click', function (e) {
+            // Aqui você pode adicionar lógicas adicionais, como tracking de download
+            showToast('Ebook baixado com sucesso!');
+        });
+    </script>
