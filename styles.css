@@ -1198,7 +1198,7 @@ body.annual-pricing .price.annual {
     box-shadow: var(--box-shadow);
     width: calc(50% - 40px);
     position: relative;
-    margin-left: 75px;
+    margin-left: 30px;
 }
 
 .timeline-content::before {
