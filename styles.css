@@ -1101,6 +1101,55 @@ section {
 }
 
 @media (max-width: 992px) {
+    .hero-content,
+    .sobre-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .left-content,
+    .right-content {
+        text-align: center;
+        max-width: 100%;
+    }
+
+    .cta-group {
+        justify-content: center;
+    }
+
+    .hero-image {
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
+    .sobre-image {
+        max-width: 350px;
+        margin: 0 auto;
+    }
+
+    .experience-badge {
+        right: 0;
+    }
+
+    .skills-container,
+    .services-container {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .timeline-content {
+        width: calc(50% - 30px);
+        margin-left: 60px;
+    }
+
+    .timeline-item:nth-child(even) .timeline-content {
+        margin-right: 60px;
+    }
+
+    .contact-container {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
     .pricing-container {
         grid-template-columns: repeat(2, 1fr);
     }
@@ -1570,7 +1619,7 @@ section {
 }
 
 /* Contato Section */
-.contato {
+.contato, .contact {
     background-color: white;
 }
 
@@ -1795,53 +1844,9 @@ section {
 
 /* Media Queries */
 @media (max-width: 992px) {
-
-    .hero-content,
-    .sobre-content {
-        grid-template-columns: 1fr;
-        gap: 40px;
-    }
-
-    .left-content,
-    .right-content {
-        text-align: center;
-        max-width: 100%;
-    }
-
-    .cta-group {
-        justify-content: center;
-    }
-
-    .hero-image {
-        max-width: 400px;
-        margin: 0 auto;
-    }
-
-    .sobre-image {
-        max-width: 350px;
-        margin: 0 auto;
-    }
-
-    .experience-badge {
-        right: 0;
-    }
-
-    .skills-container,
-    .services-container {
-        grid-template-columns: 1fr 1fr;
-    }
-
-    .timeline-content {
-        width: calc(50% - 30px);
-        margin-left: 60px;
-    }
-
-    .timeline-item:nth-child(even) .timeline-content {
-        margin-right: 60px;
-    }
-
     .contact-container {
         grid-template-columns: 1fr;
+        gap: 30px;
     }
 }
 
