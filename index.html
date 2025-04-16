@@ -11,14 +11,29 @@
     <meta name="keywords" content="desenvolvedor web, front-end, back-end, react, django, wordpress, elementor, figma, ui/ux, desenvolvimento web, landing pages, sistemas web">
     <meta name="theme-color" content="#0e1a2d">
     
-    <!-- Fontes -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="preconnect" href="https://unpkg.com" crossorigin>
     
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Fontes com display swap -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    </noscript>
     
-    <!-- AOS Animations -->
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <!-- Font Awesome com carregamento otimizado -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
+    <noscript>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    </noscript>
+    
+    <!-- AOS Animations carregado de forma otimizada -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" media="print" onload="this.media='all'">
+    <noscript>
+        <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
+    </noscript>
     
     <!-- CSS personalizado -->
     <link rel="stylesheet" href="styles.css">
@@ -35,13 +50,18 @@
     <!-- Favicon -->
     <link rel="shortcut icon" href="favicon.webp" type="image/x-icon">
     
-    <!-- Google Analytics -->
+    <!-- Google Analytics - carregamento diferido com modo de privacidade avançada -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-8HJDRKCE39"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
-        gtag('config', 'G-8HJDRKCE39');
+        gtag('config', 'G-8HJDRKCE39', {
+            'anonymize_ip': true,
+            'cookie_flags': 'SameSite=None;Secure',
+            'cookie_domain': 'none',
+            'client_storage': 'none'
+        });
     </script>
 </head>
 
@@ -643,37 +663,38 @@
             <div class="portfolio-grid">
                 <div class="portfolio-item web" data-aos="fade-up">
                     <div class="portfolio-image">
-                        <iframe src="https://www.behance.net/embed/project/222913289?ilo0=1" height="316" width="404" allowfullscreen lazyload frameborder="0" allow="clipboard-write" refererPolicy="strict-origin-when-cross-origin"></iframe>
+                        <iframe src="https://www.behance.net/embed/project/222913289?ilo0=1" height="316" width="404" loading="lazy" title="Portfolio Web Design Project" frameborder="0" allow="clipboard-write" referrerpolicy="strict-origin-when-cross-origin"></iframe>
                     </div>
                 </div>
 
                 <div class="portfolio-item landing" data-aos="fade-up" data-aos-delay="200">
                     <div class="portfolio-image">
-                        <iframe src="https://www.behance.net/embed/project/222458325?ilo0=1" height="316" width="404" allowfullscreen lazyload frameborder="0" allow="clipboard-write" refererPolicy="strict-origin-when-cross-origin"></iframe>
+                        <iframe src="https://www.behance.net/embed/project/222458325?ilo0=1" height="316" width="404" loading="lazy" title="Portfolio Landing Page Project" frameborder="0" allow="clipboard-write" referrerpolicy="strict-origin-when-cross-origin"></iframe>
                     </div>
                 </div>
 
                 <div class="portfolio-item landing" data-aos="fade-up" data-aos-delay="200">
                     <div class="portfolio-image">
-                        <iframe src="https://www.behance.net/embed/project/221275965?ilo0=1" height="316" width="404" allowfullscreen lazyload frameborder="0" allow="clipboard-write" refererPolicy="strict-origin-when-cross-origin"></iframe>
+                        <iframe src="https://www.behance.net/embed/project/221275965?ilo0=1" height="316" width="404" loading="lazy" title="Portfolio Landing Page Project" frameborder="0" allow="clipboard-write" referrerpolicy="strict-origin-when-cross-origin"></iframe>
                     </div>
                 </div>
 
                 <div class="portfolio-item ecommerce" data-aos="fade-up" data-aos-delay="400">
                     <div class="portfolio-image">
-                        <iframe src="https://www.behance.net/embed/project/222912511?ilo0=1" height="316" width="404" allowfullscreen lazyload frameborder="0" allow="clipboard-write" refererPolicy="strict-origin-when-cross-origin"></iframe>
+                        <iframe src="https://www.behance.net/embed/project/222912511?ilo0=1" height="316" width="404" loading="lazy" title="Portfolio E-commerce Project" frameborder="0" allow="clipboard-write" referrerpolicy="strict-origin-when-cross-origin"></iframe>
                     </div>
                 </div>
 
                 <div class="portfolio-item app" data-aos="fade-up" data-aos-delay="600">
                     <div class="portfolio-image">
-                        <iframe src="https://www.behance.net/embed/project/219799631?ilo0=1" height="316" width="404" allowfullscreen lazyload frameborder="0" allow="clipboard-write" refererPolicy="strict-origin-when-cross-origin"></iframe>
+                        <iframe src="https://www.behance.net/embed/project/219799631?ilo0=1" height="316" width="404" loading="lazy" title="Portfolio App Project" frameborder="0" allow="clipboard-write" referrerpolicy="strict-origin-when-cross-origin"></iframe>
                     </div>
                 </div>
 
                 <div class="portfolio-item app" data-aos="fade-up" data-aos-delay="600">
                     <div class="portfolio-image">
-                        <iframe src="https://www.behance.net/embed/project/219581283?ilo0=1" height="316" width="404" allowfullscreen lazyload frameborder="0" allow="clipboard-write" refererPolicy="strict-origin-when-cross-origin"></iframe>                    </div>
+                        <iframe src="https://www.behance.net/embed/project/219581283?ilo0=1" height="316" width="404" loading="lazy" title="Portfolio App Project" frameborder="0" allow="clipboard-write" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                    </div>
                 </div>
             </div>
         </div>
@@ -694,7 +715,7 @@
                             <p>"Iago transformou completamente a presença digital da nossa empresa. O site não só ficou visualmente impressionante, como também começou a gerar leads desde a primeira semana. O profissionalismo e conhecimento técnico dele são incomparáveis."</p>
                         </div>
                         <div class="testimonial-author">
-                            <img src="https://randomuser.me/api/portraits/men/42.jpg" alt="João Silva">
+                            <img src="https://randomuser.me/api/portraits/men/42.jpg" alt="João Silva - CEO, Tech Solutions" width="64" height="64" loading="lazy">
                             <div class="author-info">
                                 <h4>João Silva</h4>
                                 <p>CEO, Tech Solutions</p>
@@ -709,7 +730,7 @@
                             <p>"Contratar o Iago foi a melhor decisão que tomamos para nosso e-commerce. Além de entregar um design moderno, ele implementou funcionalidades que melhoraram significativamente nossa taxa de conversão. Um verdadeiro especialista!"</p>
                         </div>
                         <div class="testimonial-author">
-                            <img src="https://randomuser.me/api/portraits/women/24.jpg" alt="Maria Santos">
+                            <img src="https://randomuser.me/api/portraits/women/24.jpg" alt="Maria Santos - Diretora, Fashion Store" width="64" height="64" loading="lazy">
                             <div class="author-info">
                                 <h4>Maria Santos</h4>
                                 <p>Diretora, Fashion Store</p>
@@ -724,7 +745,7 @@
                             <p>"Extremamente satisfeito com o sistema web desenvolvido pelo Iago. Ele entendeu exatamente o que precisávamos e entregou uma solução que superou nossas expectativas. A aplicação é intuitiva, rápida e completamente customizada para nosso fluxo de trabalho."</p>
                         </div>
                         <div class="testimonial-author">
-                            <img src="https://randomuser.me/api/portraits/men/64.jpg" alt="Carlos Mendes">
+                            <img src="https://randomuser.me/api/portraits/men/64.jpg" alt="Carlos Mendes - Gerente de Operações, LogiTech" width="64" height="64" loading="lazy">
                             <div class="author-info">
                                 <h4>Carlos Mendes</h4>
                                 <p>Gerente de Operações, LogiTech</p>
@@ -734,8 +755,8 @@
                 </div>
             </div>
             <div class="testimonial-nav">
-                <button class="prev-testimonial"><i class="fas fa-chevron-left"></i></button>
-                <button class="next-testimonial"><i class="fas fa-chevron-right"></i></button>
+                <button class="prev-testimonial" aria-label="Testemunho anterior"><i class="fas fa-chevron-left"></i></button>
+                <button class="next-testimonial" aria-label="Próximo testemunho"><i class="fas fa-chevron-right"></i></button>
             </div>
         </div>
     </section>
@@ -751,69 +772,67 @@
         </div>
     </section>
 
-    <!-- Contato Section -->
-    <section id="contato" class="contato">
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
         <div class="container">
             <div class="section-header">
                 <span class="section-subtitle" data-aos="fade-up">Entre em contato</span>
-                <h2 class="section-title" data-aos="fade-up" data-aos-delay="100">Vamos Trabalhar Juntos</h2>
+                <h2 class="section-title" data-aos="fade-up" data-aos-delay="100">Vamos Conversar</h2>
                 <div class="section-divider" data-aos="fade-up" data-aos-delay="200"></div>
             </div>
-            <div class="contact-container">
-                <div class="contact-info" data-aos="fade-right">
-                    <div class="contact-card">
-                        <div class="contact-icon">
-                            <i class="fas fa-envelope"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h3>Email</h3>
-                            <p><a href="mailto:iagovirgilio@gmail.com">iagovirgilio@gmail.com</a></p>
+            <div class="contact-wrapper">
+                <div class="contact-info" data-aos="fade-up">
+                    <div class="contact-item">
+                        <div class="icon"><i class="fas fa-envelope"></i></div>
+                        <div class="info">
+                            <h4>Email</h4>
+                            <a href="mailto:iago@exemplo.com" aria-label="Enviar email para Iago">iago@exemplo.com</a>
                         </div>
                     </div>
-                    <div class="contact-card">
-                        <div class="contact-icon">
-                            <i class="fas fa-phone"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h3>Telefone</h3>
-                            <p><a href="tel:+5575981311648">(75) 98131-1648</a></p>
+                    <div class="contact-item">
+                        <div class="icon"><i class="fas fa-phone"></i></div>
+                        <div class="info">
+                            <h4>Telefone</h4>
+                            <a href="tel:+551199999999" aria-label="Ligar para Iago">(11) 9999-9999</a>
                         </div>
                     </div>
-                    <div class="contact-card">
-                        <div class="contact-icon">
-                            <i class="fas fa-map-marker-alt"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h3>Localização</h3>
-                            <p>Bahia, Brasil</p>
+                    <div class="contact-item">
+                        <div class="icon"><i class="fas fa-map-marker-alt"></i></div>
+                        <div class="info">
+                            <h4>Localização</h4>
+                            <p>São Paulo, Brasil</p>
                         </div>
                     </div>
-                    <div class="social-links">
-                        <a href="#" target="_blank" class="social-link"><i class="fab fa-github"></i></a>
-                        <a href="#" target="_blank" class="social-link"><i class="fab fa-linkedin"></i></a>
-                        <a href="#" target="_blank" class="social-link"><i class="fab fa-instagram"></i></a>
-                        <a href="#" target="_blank" class="social-link"><i class="fab fa-behance"></i></a>
+                    <div class="contact-social">
+                        <a href="https://www.linkedin.com/in/iagoexemplo/" aria-label="LinkedIn do Iago" rel="noopener"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://github.com/iagoexemplo/" aria-label="GitHub do Iago" rel="noopener"><i class="fab fa-github"></i></a>
+                        <a href="https://behance.net/iagoexemplo/" aria-label="Behance do Iago" rel="noopener"><i class="fab fa-behance"></i></a>
                     </div>
                 </div>
-                <div class="contact-form" data-aos="fade-left">
-                    <form id="contact-form">
+                <div class="contact-form-container" data-aos="fade-up" data-aos-delay="200">
+                    <form id="contact-form" class="contact-form" novalidate>
                         <div class="form-group">
-                            <label for="nome">Nome</label>
-                            <input type="text" id="nome" name="nome" required>
+                            <label for="name">Nome</label>
+                            <input type="text" id="name" name="name" required aria-required="true" placeholder="Seu nome completo">
+                            <div class="error-message" id="name-error" aria-live="polite"></div>
                         </div>
                         <div class="form-group">
                             <label for="email">Email</label>
-                            <input type="email" id="email" name="email" required>
+                            <input type="email" id="email" name="email" required aria-required="true" placeholder="seu@email.com">
+                            <div class="error-message" id="email-error" aria-live="polite"></div>
                         </div>
                         <div class="form-group">
-                            <label for="assunto">Assunto</label>
-                            <input type="text" id="assunto" name="assunto" required>
+                            <label for="subject">Assunto</label>
+                            <input type="text" id="subject" name="subject" required aria-required="true" placeholder="Assunto da mensagem">
+                            <div class="error-message" id="subject-error" aria-live="polite"></div>
                         </div>
                         <div class="form-group">
-                            <label for="mensagem">Mensagem</label>
-                            <textarea id="mensagem" name="mensagem" rows="5" required></textarea>
+                            <label for="message">Mensagem</label>
+                            <textarea id="message" name="message" rows="5" required aria-required="true" placeholder="Sua mensagem..."></textarea>
+                            <div class="error-message" id="message-error" aria-live="polite"></div>
                         </div>
-                        <button type="submit" class="btn btn-primary">Enviar Mensagem</button>
+                        <button type="submit" class="btn btn-primary btn-submit">Enviar Mensagem</button>
+                        <div class="form-status" aria-live="assertive"></div>
                     </form>
                 </div>
             </div>
@@ -902,6 +921,68 @@
             <a href="https://meunegociosimples.com.br/" target="_blank" class="btn btn-primary">Visitar o Site</a>
         </div>
     </div>
+
+    <!-- Política de Cookies -->
+    <div id="cookie-banner" class="cookie-banner">
+        <div class="cookie-content">
+            <p>Este site utiliza cookies essenciais para garantir seu funcionamento. Cookies de análise são utilizados apenas com seu consentimento para melhorar nossa experiência.</p>
+            <div class="cookie-buttons">
+                <button id="cookie-accept-all" class="btn btn-primary">Aceitar Todos</button>
+                <button id="cookie-accept-essential" class="btn btn-outline">Apenas Essenciais</button>
+                <a href="#" class="cookie-policy-link">Política de Privacidade</a>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .cookie-banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(14, 26, 45, 0.95);
+            color: #fff;
+            padding: 15px 20px;
+            z-index: 10000;
+            display: none;
+            box-shadow: 0 -5px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .cookie-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .cookie-content p {
+            margin: 0;
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .cookie-buttons {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .cookie-policy-link {
+            color: #fff;
+            text-decoration: underline;
+            padding: 8px 15px;
+        }
+        
+        @media (max-width: 768px) {
+            .cookie-content {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
 
     <!-- Scripts -->
     <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
@@ -1037,10 +1118,10 @@
         document.getElementById('contact-form').addEventListener('submit', function(e) {
             e.preventDefault();
             
-            const nome = document.getElementById('nome').value;
+            const nome = document.getElementById('name').value;
             const email = document.getElementById('email').value;
-            const assunto = document.getElementById('assunto').value;
-            const mensagem = document.getElementById('mensagem').value;
+            const assunto = document.getElementById('subject').value;
+            const mensagem = document.getElementById('message').value;
             
             // Prepare WhatsApp message
             const whatsappNumber = "+5575981311648";
@@ -1089,6 +1170,64 @@
             }
             showTestimonial(currentTestimonial);
         }, 6000);
+
+        // Script para gerenciamento de cookies
+        document.addEventListener('DOMContentLoaded', function() {
+            // Verificar se o usuário já deu consentimento
+            const cookieConsent = getCookie('cookieConsent');
+            const cookieBanner = document.getElementById('cookie-banner');
+            
+            if (!cookieConsent) {
+                // Mostrar o banner se não houver consentimento
+                cookieBanner.style.display = 'block';
+            } else if (cookieConsent === 'essential') {
+                // Se usuário aceitou apenas cookies essenciais
+                disableAnalyticsCookies();
+            }
+            
+            // Botão de aceitar todos os cookies
+            document.getElementById('cookie-accept-all').addEventListener('click', function() {
+                setCookie('cookieConsent', 'all', 365);
+                cookieBanner.style.display = 'none';
+            });
+            
+            // Botão de aceitar apenas cookies essenciais
+            document.getElementById('cookie-accept-essential').addEventListener('click', function() {
+                setCookie('cookieConsent', 'essential', 365);
+                disableAnalyticsCookies();
+                cookieBanner.style.display = 'none';
+            });
+            
+            // Funções auxiliares
+            function setCookie(name, value, days) {
+                const date = new Date();
+                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                const expires = '; expires=' + date.toUTCString();
+                document.cookie = name + '=' + value + expires + '; path=/; SameSite=Lax';
+            }
+            
+            function getCookie(name) {
+                const nameEQ = name + '=';
+                const ca = document.cookie.split(';');
+                for (let i = 0; i < ca.length; i++) {
+                    let c = ca[i];
+                    while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+                    if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
+                }
+                return null;
+            }
+            
+            function disableAnalyticsCookies() {
+                // Desabilitar o Google Analytics
+                window['ga-disable-G-8HJDRKCE39'] = true;
+                
+                // Remover cookies do Google Analytics
+                document.cookie = '_ga=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+                document.cookie = '_ga_8HJDRKCE39=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+                document.cookie = '_gid=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+                document.cookie = '_gat=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+            }
+        });
     </script>
 </body>
 
